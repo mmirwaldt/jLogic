@@ -4,11 +4,14 @@ import net.mirwaldt.logic.propositional.util.api.BiBooleanPredicate;
 import net.mirwaldt.logic.propositional.util.api.BooleanPredicate;
 import net.mirwaldt.logic.propositional.api.Proposition;
 
+import java.util.List;
+import java.util.Map;
+
 public class Propositions {
     public final static ValueProposition FALSE = new ValueProposition(false);
     public final static ValueProposition TRUE = new ValueProposition(true);
 
-    public final static Proposition variable(String variableId) {
+    public final static VariableProposition variable(String variableId) {
         return new VariableProposition(variableId);
     }
 
@@ -52,5 +55,11 @@ public class Propositions {
     
     public final static Proposition nor(Proposition leftProposition, Proposition rightProposition) {
         return negate(or(leftProposition, rightProposition));
+    }
+    
+    public final static Proposition function(String functionName,
+                                             List<VariableProposition> parameters,
+                                             Map<List<Boolean>, Boolean> functionValues) {
+        return new FunctionProposition(functionName, parameters, functionValues);
     }
 }

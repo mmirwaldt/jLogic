@@ -22,7 +22,7 @@ public class UnaryPropositionTest {
     
     @Test
     void test_expression() {
-        assertEquals(String.valueOf(true), identity.toExpression());
+        assertEquals(String.valueOf(1), identity.toExpression());
     }
 
     @Test

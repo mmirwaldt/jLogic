@@ -1,5 +1,7 @@
 package net.mirwaldt.logic.propositional.api;
 
+import static net.mirwaldt.logic.propositional.util.PropositionUtils.toBit;
+
 public interface Proposition {
     /**
      * evaluates an interpretation (the values for propositional variables)
@@ -8,10 +10,14 @@ public interface Proposition {
      * @throws java.util.NoSuchElementException if map contains not the needed values for the evaluation 
      */
     boolean evaluate(Interpretation interpretation);
-
+    
     /**
      * converts proposition to expression string
      * @return the proposition as expression string
      */
     String toExpression();
+    
+    default int evaluateAsBit(Interpretation interpretation) {
+        return toBit(evaluate(interpretation));
+    }
 }

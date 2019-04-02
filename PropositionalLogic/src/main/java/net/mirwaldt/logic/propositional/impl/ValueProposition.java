@@ -3,6 +3,8 @@ package net.mirwaldt.logic.propositional.impl;
 import net.mirwaldt.logic.propositional.api.Interpretation;
 import net.mirwaldt.logic.propositional.api.Proposition;
 
+import static net.mirwaldt.logic.propositional.util.PropositionUtils.toBit;
+
 public class ValueProposition implements Proposition {
     private final boolean value;
 
@@ -16,7 +18,6 @@ public class ValueProposition implements Proposition {
 
     @Override
     public String toExpression() {
-        return String.valueOf(value);
+        return String.valueOf(toBit(value));
     }
-
 }

@@ -20,4 +20,8 @@ public class VariableProposition implements Proposition {
     public String toExpression() {
         return variableName;
     }
+
+    public String getVariableName() {
+        return variableName;
+    }
 }
