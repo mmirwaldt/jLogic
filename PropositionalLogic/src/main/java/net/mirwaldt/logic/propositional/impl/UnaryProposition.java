@@ -1,5 +1,6 @@
 package net.mirwaldt.logic.propositional.impl;
 
+import net.mirwaldt.logic.propositional.api.Interpretation;
 import net.mirwaldt.logic.propositional.util.api.BooleanPredicate;
 import net.mirwaldt.logic.propositional.api.Proposition;
 
@@ -24,7 +25,7 @@ public class UnaryProposition implements Proposition {
     }
 
     @Override
-    public boolean evaluate(Map<String, Boolean> interpretation) {
+    public boolean evaluate(Interpretation interpretation) {
         return booleanPredicate.test(proposition.evaluate(interpretation));
     }
 

@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Map;
 
+import static net.mirwaldt.logic.propositional.impl.Interpretations.forMap;
 import static net.mirwaldt.logic.propositional.impl.Propositions.and;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -21,9 +22,9 @@ public class AndTest {
 
     @Test
     void test_evaluate() {
-        assertTrue(A_AND_B.evaluate(Map.of("A", true, "B", true)));
-        assertFalse(A_AND_B.evaluate(Map.of("A", true, "B", false)));
-        assertFalse(A_AND_B.evaluate(Map.of("A", false, "B", true)));
-        assertFalse(A_AND_B.evaluate(Map.of("A", false, "B", false)));
+        assertTrue(A_AND_B.evaluate(forMap(Map.of("A", true, "B", true))));
+        assertFalse(A_AND_B.evaluate(forMap(Map.of("A", true, "B", false))));
+        assertFalse(A_AND_B.evaluate(forMap(Map.of("A", false, "B", true))));
+        assertFalse(A_AND_B.evaluate(forMap(Map.of("A", false, "B", false))));
     }
 }

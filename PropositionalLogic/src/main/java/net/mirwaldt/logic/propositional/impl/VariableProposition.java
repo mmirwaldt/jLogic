@@ -1,9 +1,8 @@
 package net.mirwaldt.logic.propositional.impl;
 
+import net.mirwaldt.logic.propositional.api.Interpretation;
 import net.mirwaldt.logic.propositional.api.Proposition;
 
-import java.util.Map;
-import java.util.NoSuchElementException;
 import java.util.Objects;
 
 public class VariableProposition implements Proposition {
@@ -14,13 +13,8 @@ public class VariableProposition implements Proposition {
         this.variableName = variableName;
     }
 
-    public boolean evaluate(Map<String, Boolean> interpretation) {
-        final Boolean value = interpretation.get(variableName);
-        if(value == null) {
-            throw new NoSuchElementException("'" + variableName + "' is missing in the interpretation.");
-        } else {
-            return value;
-        }
+    public boolean evaluate(Interpretation interpretation) {
+        return interpretation.get(variableName);
     }
 
     public String toExpression() {

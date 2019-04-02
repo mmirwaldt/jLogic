@@ -1,8 +1,7 @@
 package net.mirwaldt.logic.propositional.impl;
 
+import net.mirwaldt.logic.propositional.api.Interpretation;
 import net.mirwaldt.logic.propositional.api.Proposition;
-
-import java.util.Map;
 
 public class ValueProposition implements Proposition {
     private final boolean value;
@@ -11,7 +10,7 @@ public class ValueProposition implements Proposition {
         this.value = value;
     }
 
-    public boolean evaluate(Map<String, Boolean> interpretation) {
+    public boolean evaluate(Interpretation interpretation) {
         return value;
     }
 

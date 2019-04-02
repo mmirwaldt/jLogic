@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Map;
 
+import static net.mirwaldt.logic.propositional.impl.Interpretations.forMap;
 import static net.mirwaldt.logic.propositional.impl.Propositions.and;
 import static net.mirwaldt.logic.propositional.impl.Propositions.ifAndOnlyIf;
 import static org.junit.jupiter.api.Assertions.*;
@@ -22,9 +23,9 @@ public class IfAndOnlyIfTest {
 
     @Test
     void test_evaluate() {
-        assertTrue(A_IF_AND_ONLY_IF_B.evaluate(Map.of("A", true, "B", true)));
-        assertFalse(A_IF_AND_ONLY_IF_B.evaluate(Map.of("A", true, "B", false)));
-        assertFalse(A_IF_AND_ONLY_IF_B.evaluate(Map.of("A", false, "B", true)));
-        assertTrue(A_IF_AND_ONLY_IF_B.evaluate(Map.of("A", false, "B", false)));
+        assertTrue(A_IF_AND_ONLY_IF_B.evaluate(forMap(Map.of("A", true, "B", true))));
+        assertFalse(A_IF_AND_ONLY_IF_B.evaluate(forMap(Map.of("A", true, "B", false))));
+        assertFalse(A_IF_AND_ONLY_IF_B.evaluate(forMap(Map.of("A", false, "B", true))));
+        assertTrue(A_IF_AND_ONLY_IF_B.evaluate(forMap(Map.of("A", false, "B", false))));
     }
 }

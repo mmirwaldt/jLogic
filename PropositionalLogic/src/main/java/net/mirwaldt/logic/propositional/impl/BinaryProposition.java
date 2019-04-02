@@ -1,5 +1,6 @@
 package net.mirwaldt.logic.propositional.impl;
 
+import net.mirwaldt.logic.propositional.api.Interpretation;
 import net.mirwaldt.logic.propositional.api.Proposition;
 import net.mirwaldt.logic.propositional.util.api.BiBooleanPredicate;
 
@@ -22,7 +23,7 @@ public class BinaryProposition implements Proposition {
     }
 
     @Override
-    public boolean evaluate(Map<String, Boolean> interpretation) {
+    public boolean evaluate(Interpretation interpretation) {
         return biBooleanPredicate.test(leftProposition.evaluate(interpretation), 
                 rightProposition.evaluate(interpretation));
     }

@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Collections;
 
+import static net.mirwaldt.logic.propositional.impl.Interpretations.forMap;
 import static net.mirwaldt.logic.propositional.impl.Propositions.TRUE;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -26,6 +27,6 @@ public class UnaryPropositionTest {
 
     @Test
     void test_evaluate() {
-        assertTrue(identity.evaluate(Collections.emptyMap()));
+        assertTrue(identity.evaluate(forMap(Collections.emptyMap())));
     }
 }

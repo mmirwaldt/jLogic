@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Map;
 
+import static net.mirwaldt.logic.propositional.impl.Interpretations.forMap;
 import static net.mirwaldt.logic.propositional.impl.Propositions.or;
 import static net.mirwaldt.logic.propositional.impl.Propositions.xor;
 import static org.junit.jupiter.api.Assertions.*;
@@ -22,9 +23,9 @@ public class XOrTest {
 
     @Test
     void test_evaluate() {
-        assertFalse(A_XOR_B.evaluate(Map.of("A", true, "B", true)));
-        assertTrue(A_XOR_B.evaluate(Map.of("A", true, "B", false)));
-        assertTrue(A_XOR_B.evaluate(Map.of("A", false, "B", true)));
-        assertFalse(A_XOR_B.evaluate(Map.of("A", false, "B", false)));
+        assertFalse(A_XOR_B.evaluate(forMap(Map.of("A", true, "B", true))));
+        assertTrue(A_XOR_B.evaluate(forMap(Map.of("A", true, "B", false))));
+        assertTrue(A_XOR_B.evaluate(forMap(Map.of("A", false, "B", true))));
+        assertFalse(A_XOR_B.evaluate(forMap(Map.of("A", false, "B", false))));
     }
 }

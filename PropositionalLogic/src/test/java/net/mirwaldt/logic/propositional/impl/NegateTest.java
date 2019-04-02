@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Collections;
 
+import static java.util.Collections.singletonMap;
+import static net.mirwaldt.logic.propositional.impl.Interpretations.forMap;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class NegateTest {
@@ -18,11 +20,11 @@ public class NegateTest {
 
     @Test
     void test_evaluateWithValueFalse() {
-        assertTrue(NEGATED_A.evaluate(Collections.singletonMap("A", false)));
+        assertTrue(NEGATED_A.evaluate(forMap(singletonMap("A", false))));
     }
 
     @Test
     void test_evaluateWithValueTrue() {
-        assertFalse(NEGATED_A.evaluate(Collections.singletonMap("A", true)));
+        assertFalse(NEGATED_A.evaluate(forMap(singletonMap("A", true))));
     }     
 }

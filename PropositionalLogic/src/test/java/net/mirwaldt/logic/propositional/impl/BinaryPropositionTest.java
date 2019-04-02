@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Map;
 
+import static net.mirwaldt.logic.propositional.impl.Interpretations.forMap;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class BinaryPropositionTest {
@@ -21,9 +22,9 @@ public class BinaryPropositionTest {
     
     @Test
     void test_evaluate() {
-        assertTrue(inverseImplication.evaluate(Map.of("A", true, "B", true)));
-        assertTrue(inverseImplication.evaluate(Map.of("A", true, "B", false)));
-        assertFalse(inverseImplication.evaluate(Map.of("A", false, "B", true)));
-        assertTrue(inverseImplication.evaluate(Map.of("A", false, "B", false)));
+        assertTrue(inverseImplication.evaluate(forMap(Map.of("A", true, "B", true))));
+        assertTrue(inverseImplication.evaluate(forMap(Map.of("A", true, "B", false))));
+        assertFalse(inverseImplication.evaluate(forMap(Map.of("A", false, "B", true))));
+        assertTrue(inverseImplication.evaluate(forMap(Map.of("A", false, "B", false))));
     }
 }
