@@ -45,4 +45,12 @@ public class Propositions {
     public final static Proposition ifAndOnlyIf(Proposition leftProposition, Proposition rightProposition) {
         return binary(leftProposition, rightProposition, (left, right)-> left == right, "%s ↔ %s");
     }
+    
+    public final static Proposition nand(Proposition leftProposition, Proposition rightProposition) {
+        return negate(and(leftProposition, rightProposition));
+    }
+    
+    public final static Proposition nor(Proposition leftProposition, Proposition rightProposition) {
+        return negate(or(leftProposition, rightProposition));
+    }
 }
