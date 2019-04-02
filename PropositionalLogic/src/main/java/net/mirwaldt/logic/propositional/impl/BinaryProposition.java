@@ -5,6 +5,8 @@ import net.mirwaldt.logic.propositional.util.api.BiBooleanPredicate;
 
 import java.util.Map;
 
+import static net.mirwaldt.logic.propositional.util.PropositionUtils.toFinalExpression;
+
 public class BinaryProposition implements Proposition {
     private final Proposition leftProposition;
     private final Proposition rightProposition;
@@ -27,6 +29,8 @@ public class BinaryProposition implements Proposition {
 
     @Override
     public String toExpression() {
-        return String.format(expressionTemplate, leftProposition.toExpression(), rightProposition.toExpression());
+        final String leftExpression = toFinalExpression(leftProposition);
+        final String rightExpression = toFinalExpression(rightProposition);
+        return String.format(expressionTemplate, leftExpression, rightExpression);
     }
 }

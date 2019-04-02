@@ -5,6 +5,8 @@ import net.mirwaldt.logic.propositional.api.Proposition;
 
 import java.util.Map;
 
+import static net.mirwaldt.logic.propositional.util.PropositionUtils.toFinalExpression;
+
 public class UnaryProposition implements Proposition {
     private final Proposition proposition;
     private final BooleanPredicate booleanPredicate;
@@ -28,6 +30,7 @@ public class UnaryProposition implements Proposition {
 
     @Override
     public String toExpression() {
-        return String.format(expressionTemplate, proposition.toExpression());
+        final String expression = toFinalExpression(proposition);
+        return String.format(expressionTemplate, expression);
     }
 }
