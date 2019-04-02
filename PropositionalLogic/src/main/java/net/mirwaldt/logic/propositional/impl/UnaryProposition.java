@@ -1,10 +1,8 @@
 package net.mirwaldt.logic.propositional.impl;
 
 import net.mirwaldt.logic.propositional.api.Interpretation;
-import net.mirwaldt.logic.propositional.util.api.BooleanPredicate;
 import net.mirwaldt.logic.propositional.api.Proposition;
-
-import java.util.Map;
+import net.mirwaldt.logic.propositional.util.api.BooleanPredicate;
 
 import static net.mirwaldt.logic.propositional.util.PropositionUtils.toFinalExpression;
 

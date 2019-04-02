@@ -4,8 +4,6 @@ import net.mirwaldt.logic.propositional.api.Interpretation;
 import net.mirwaldt.logic.propositional.api.Proposition;
 import net.mirwaldt.logic.propositional.util.api.BiBooleanPredicate;
 
-import java.util.Map;
-
 import static net.mirwaldt.logic.propositional.util.PropositionUtils.toFinalExpression;
 
 public class BinaryProposition implements Proposition {
