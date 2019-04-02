@@ -4,6 +4,7 @@ import net.mirwaldt.logic.propositional.api.Proposition;
 import org.junit.jupiter.api.Test;
 
 import java.util.Map;
+import java.util.Set;
 
 import static net.mirwaldt.logic.propositional.impl.Interpretations.forMap;
 import static net.mirwaldt.logic.propositional.impl.Propositions.and;
@@ -58,5 +59,10 @@ public class AndListTest {
                 forMap(Map.of("A", fromBit(1), "B", fromBit(1), "C", fromBit(1), "D", fromBit(0)))));
         assertFalse(A_AND_B_AND_NOT_C_AND_D.evaluate(
                 forMap(Map.of("A", fromBit(1), "B", fromBit(1), "C", fromBit(1), "D", fromBit(1)))));
+    }
+    
+    @Test
+    void test_findVariableNames() {
+        assertEquals(Set.of("A", "B", "C", "D"), A_AND_B_AND_NOT_C_AND_D.findVariableNames());
     }
 }

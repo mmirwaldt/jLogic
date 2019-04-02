@@ -4,6 +4,8 @@ import net.mirwaldt.logic.propositional.api.Interpretation;
 import net.mirwaldt.logic.propositional.api.Proposition;
 import net.mirwaldt.logic.propositional.util.api.BooleanPredicate;
 
+import java.util.Set;
+
 import static net.mirwaldt.logic.propositional.util.PropositionUtils.toFinalExpression;
 
 public class UnaryProposition implements Proposition {
@@ -31,5 +33,10 @@ public class UnaryProposition implements Proposition {
     public String toExpression() {
         final String expression = toFinalExpression(proposition);
         return String.format(expressionTemplate, expression);
+    }
+
+    @Override
+    public Set<String> findVariableNames() {
+        return proposition.findVariableNames();
     }
 }

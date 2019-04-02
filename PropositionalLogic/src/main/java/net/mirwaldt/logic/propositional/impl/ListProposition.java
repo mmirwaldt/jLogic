@@ -6,6 +6,8 @@ import net.mirwaldt.logic.propositional.api.Proposition;
 import net.mirwaldt.logic.propositional.util.api.BiBooleanPredicate;
 
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * Can only be used for left associative operators.
@@ -15,8 +17,8 @@ public class ListProposition implements MultiProposition {
     private final BiBooleanPredicate biBooleanPredicate;
     private final String expressionTemplate;
 
-    public ListProposition(List<Proposition> propositions, 
-                           BiBooleanPredicate biBooleanPredicate, 
+    public ListProposition(List<Proposition> propositions,
+                           BiBooleanPredicate biBooleanPredicate,
                            String expressionTemplate) {
         this.propositions = propositions;
         this.biBooleanPredicate = biBooleanPredicate;
@@ -43,10 +45,17 @@ public class ListProposition implements MultiProposition {
         String finalExpressionTemplate = expressionTemplate;
         for (int index = 2; index < propositions.size(); index++) {
             finalExpressionTemplate = String.format(expressionTemplate, finalExpressionTemplate, "%s");
-        }   
-        return String.format(finalExpressionTemplate, 
+        }
+        return String.format(finalExpressionTemplate,
                 propositions.stream()
                         .map(Proposition::toExpression)
                         .toArray());
+    }
+
+    @Override
+    public Set<String> findVariableNames() {
+        return propositions.stream()
+                .flatMap(proposition -> proposition.findVariableNames().stream())
+                .collect(Collectors.toSet());
     }
 }

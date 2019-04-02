@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Collections;
 import java.util.NoSuchElementException;
+import java.util.Set;
 
 import static net.mirwaldt.logic.propositional.impl.Interpretations.forMap;
 import static org.junit.jupiter.api.Assertions.*;
@@ -40,5 +41,10 @@ public class VariablePropositionTest {
     @Test
     void test_evaluateWithValueTrue() {
         assertTrue(A.evaluate(forMap(Collections.singletonMap("A", true))));
+    }
+    
+    @Test
+    void test_findVariableNames() {
+        assertEquals(Set.of("A"), A.findVariableNames());
     }
 }

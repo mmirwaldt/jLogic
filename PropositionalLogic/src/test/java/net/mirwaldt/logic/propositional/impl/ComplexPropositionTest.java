@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Map;
 import java.util.NoSuchElementException;
+import java.util.Set;
 
 import static net.mirwaldt.logic.propositional.impl.Interpretations.forMap;
 import static net.mirwaldt.logic.propositional.impl.Propositions.*;
@@ -63,5 +64,10 @@ public class ComplexPropositionTest {
                 forMap(Map.of("A", fromBit(1), "B", fromBit(1), "C", fromBit(1), "D", fromBit(0)))));
         assertFalse(complex.evaluate(
                 forMap(Map.of("A", fromBit(1), "B", fromBit(1), "C", fromBit(1), "D", fromBit(1)))));
+    }
+    
+    @Test
+    void test_findVariableNames() {
+        assertEquals(Set.of("A", "B", "C", "D"), complex.findVariableNames());
     }
 }

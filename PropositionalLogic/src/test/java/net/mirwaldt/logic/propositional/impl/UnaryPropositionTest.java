@@ -5,6 +5,7 @@ import net.mirwaldt.logic.propositional.api.Proposition;
 import org.junit.jupiter.api.Test;
 
 import java.util.Collections;
+import java.util.Set;
 
 import static net.mirwaldt.logic.propositional.impl.Interpretations.forMap;
 import static net.mirwaldt.logic.propositional.impl.Propositions.TRUE;
@@ -28,5 +29,10 @@ public class UnaryPropositionTest {
     @Test
     void test_evaluate() {
         assertTrue(identity.evaluate(forMap(Collections.emptyMap())));
+    }
+
+    @Test
+    void test_findVariableNames() {
+        assertEquals(Collections.emptySet(), identity.findVariableNames());
     }
 }

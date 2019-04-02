@@ -4,13 +4,11 @@ import net.mirwaldt.logic.propositional.api.Interpretation;
 import net.mirwaldt.logic.propositional.api.Proposition;
 import net.mirwaldt.logic.propositional.util.PropositionUtils;
 
-import java.util.List;
-import java.util.Map;
-import java.util.NoSuchElementException;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.toSet;
 import static net.mirwaldt.logic.propositional.util.PropositionUtils.toBits;
 
 public class FunctionProposition implements Proposition {
@@ -75,6 +73,11 @@ public class FunctionProposition implements Proposition {
     public String toExpression() {
         final String parameterList = createParameterListString();
         return functionName + "(" + parameterList + ")";
+    }
+
+    @Override
+    public Set<String> findVariableNames() {
+        return parameters.stream().map(VariableProposition::getVariableName).collect(toSet());
     }
 
     private String createParameterListString() {

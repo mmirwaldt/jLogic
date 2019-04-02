@@ -99,4 +99,9 @@ public class FunctionTest {
         assertThrows(NoSuchElementException.class,
                 () -> incompleteParity.evaluate(forMap(Map.of("B0", fromBit(0), "B1", fromBit(0), "B2", fromBit(1)))));
     }
+    
+    @Test
+    void test_findVariableNames() {
+        assertEquals(Set.of("B0", "B1", "B2"), parity.findVariableNames());
+    }
 }

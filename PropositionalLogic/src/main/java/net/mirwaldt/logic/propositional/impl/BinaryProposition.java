@@ -5,6 +5,10 @@ import net.mirwaldt.logic.propositional.api.MultiProposition;
 import net.mirwaldt.logic.propositional.api.Proposition;
 import net.mirwaldt.logic.propositional.util.api.BiBooleanPredicate;
 
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import static net.mirwaldt.logic.propositional.util.PropositionUtils.toFinalExpression;
 
 public class BinaryProposition implements MultiProposition {
@@ -32,5 +36,12 @@ public class BinaryProposition implements MultiProposition {
         final String leftExpression = toFinalExpression(leftProposition);
         final String rightExpression = toFinalExpression(rightProposition);
         return String.format(expressionTemplate, leftExpression, rightExpression);
+    }
+
+    @Override
+    public Set<String> findVariableNames() {
+        return Stream.of(leftProposition, rightProposition)
+                .flatMap(proposition -> proposition.findVariableNames().stream())
+                .collect(Collectors.toSet());
     }
 }

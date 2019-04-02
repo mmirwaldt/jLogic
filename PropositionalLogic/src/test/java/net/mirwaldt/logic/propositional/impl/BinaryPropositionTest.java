@@ -4,6 +4,7 @@ import net.mirwaldt.logic.propositional.api.Proposition;
 import org.junit.jupiter.api.Test;
 
 import java.util.Map;
+import java.util.Set;
 
 import static net.mirwaldt.logic.propositional.impl.Interpretations.forMap;
 import static org.junit.jupiter.api.Assertions.*;
@@ -26,5 +27,10 @@ public class BinaryPropositionTest {
         assertTrue(inverseImplication.evaluate(forMap(Map.of("A", true, "B", false))));
         assertFalse(inverseImplication.evaluate(forMap(Map.of("A", false, "B", true))));
         assertTrue(inverseImplication.evaluate(forMap(Map.of("A", false, "B", false))));
+    }
+
+    @Test
+    void test_findVariableNames() {
+        assertEquals(Set.of("A", "B"), inverseImplication.findVariableNames());
     }
 }

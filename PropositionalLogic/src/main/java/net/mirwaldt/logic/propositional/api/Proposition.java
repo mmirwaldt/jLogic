@@ -1,5 +1,7 @@
 package net.mirwaldt.logic.propositional.api;
 
+import java.util.Set;
+
 import static net.mirwaldt.logic.propositional.util.PropositionUtils.toBit;
 
 public interface Proposition {
@@ -20,4 +22,6 @@ public interface Proposition {
     default int evaluateAsBit(Interpretation interpretation) {
         return toBit(evaluate(interpretation));
     }
+    
+    Set<String> findVariableNames();
 }
