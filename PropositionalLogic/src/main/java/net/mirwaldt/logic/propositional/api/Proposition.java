@@ -10,5 +10,10 @@ public interface Proposition {
      * @throws java.util.NoSuchElementException if map contains not the needed values for the evaluation 
      */
     boolean evaluate(Map<String, Boolean> interpretation);
+
+    /**
+     * converts proposition to expression string
+     * @return the proposition as expression string
+     */
     String toExpression();
 }
