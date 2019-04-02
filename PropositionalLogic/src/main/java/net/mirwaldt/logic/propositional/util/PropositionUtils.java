@@ -1,7 +1,7 @@
 package net.mirwaldt.logic.propositional.util;
 
+import net.mirwaldt.logic.propositional.api.MultiProposition;
 import net.mirwaldt.logic.propositional.api.Proposition;
-import net.mirwaldt.logic.propositional.impl.BinaryProposition;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 
 public class PropositionUtils {
     public static String toFinalExpression(Proposition proposition) {
-        if (proposition instanceof BinaryProposition) {
+        if (proposition instanceof MultiProposition) {
             return "(" + proposition.toExpression() + ")";
         } else {
             return proposition.toExpression();

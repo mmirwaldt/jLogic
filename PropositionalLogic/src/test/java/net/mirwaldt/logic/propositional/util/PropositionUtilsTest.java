@@ -23,6 +23,9 @@ public class PropositionUtilsTest {
                 PropositionUtils.toFinalExpression(
                         function("f", asList(variable("A")),
                                 Collections.singletonMap(fromBits(0), fromBit(0)))));
+        assertEquals("(A ∧ B ∧ C)", 
+                PropositionUtils.toFinalExpression(
+                        and(variable("A"), variable("B"), variable("C"))));
     }
 
     @Test

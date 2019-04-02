@@ -1,12 +1,13 @@
 package net.mirwaldt.logic.propositional.impl;
 
 import net.mirwaldt.logic.propositional.api.Interpretation;
+import net.mirwaldt.logic.propositional.api.MultiProposition;
 import net.mirwaldt.logic.propositional.api.Proposition;
 import net.mirwaldt.logic.propositional.util.api.BiBooleanPredicate;
 
 import static net.mirwaldt.logic.propositional.util.PropositionUtils.toFinalExpression;
 
-public class BinaryProposition implements Proposition {
+public class BinaryProposition implements MultiProposition {
     private final Proposition leftProposition;
     private final Proposition rightProposition;
     private final BiBooleanPredicate biBooleanPredicate;
