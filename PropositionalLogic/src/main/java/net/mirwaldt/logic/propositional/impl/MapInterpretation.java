@@ -2,6 +2,8 @@ package net.mirwaldt.logic.propositional.impl;
 
 import net.mirwaldt.logic.propositional.api.Interpretation;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
 
@@ -20,5 +22,10 @@ public class MapInterpretation implements Interpretation {
         } else {
             return value;
         }
+    }
+
+    @Override
+    public List<String> getVariableNames() {
+        return new ArrayList<>(interpretationMap.keySet());
     }
 }
