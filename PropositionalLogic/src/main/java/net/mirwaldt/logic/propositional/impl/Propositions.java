@@ -1,5 +1,7 @@
 package net.mirwaldt.logic.propositional.impl;
 
+import net.mirwaldt.logic.propositional.api.BooleanFunction;
+import net.mirwaldt.logic.propositional.api.Interpretation;
 import net.mirwaldt.logic.propositional.api.Proposition;
 import net.mirwaldt.logic.propositional.util.api.BiBooleanPredicate;
 import net.mirwaldt.logic.propositional.util.api.BooleanPredicate;
@@ -64,10 +66,10 @@ public class Propositions {
         return negate(or(leftProposition, rightProposition));
     }
 
-    public static Proposition function(String functionName,
-                                       List<VariableProposition> parameters,
-                                       Map<List<Boolean>, Boolean> functionValues) {
-        return new FunctionProposition(functionName, parameters, functionValues);
+    public static Proposition function(String functionName, List<String> parameterNames,
+                                       List<Interpretation> interpretations, long resultBits) {
+        return new FunctionProposition(
+                new LongBooleanFunction(functionName, parameterNames, interpretations, resultBits));
     }
 
     public static Proposition and(Proposition firstProposition, Proposition secondProposition,

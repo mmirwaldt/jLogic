@@ -1,9 +1,7 @@
 package net.mirwaldt.logic.propositional.util;
 
+import net.mirwaldt.logic.propositional.api.Interpretation;
 import org.junit.jupiter.api.Test;
-
-import java.util.Arrays;
-import java.util.Collections;
 
 import static java.util.Arrays.asList;
 import static java.util.Collections.emptyList;
@@ -21,9 +19,8 @@ public class PropositionUtilsTest {
         assertEquals("(A ∧ B)", PropositionUtils.toFinalExpression(and(variable("A"), variable("B"))));
         assertEquals("f(A)",
                 PropositionUtils.toFinalExpression(
-                        function("f", asList(variable("A")),
-                                Collections.singletonMap(fromBits(0), fromBit(0)))));
-        assertEquals("(A ∧ B ∧ C)", 
+                        function("f", asList("A"), asList(Interpretation.of("A", 1)), 0)));
+        assertEquals("(A ∧ B ∧ C)",
                 PropositionUtils.toFinalExpression(
                         and(variable("A"), variable("B"), variable("C"))));
     }
@@ -48,7 +45,7 @@ public class PropositionUtilsTest {
         //noinspection ResultOfMethodCallIgnored
         assertThrows(IllegalArgumentException.class, () -> fromBit(-1));
     }
-    
+
     @Test
     void test_fromBits() {
         assertEquals(emptyList(), fromBits());

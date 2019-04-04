@@ -7,6 +7,7 @@ import net.mirwaldt.logic.propositional.api.TruthTable;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+import static net.mirwaldt.logic.propositional.util.BitUtils.decode;
 import static net.mirwaldt.logic.propositional.util.PropositionUtils.fromBit;
 
 public class LongTruthTable implements TruthTable {
@@ -35,9 +36,7 @@ public class LongTruthTable implements TruthTable {
     public boolean getResult(Interpretation interpretation) {        
         final int index = interpretations.indexOf(interpretation);
         if(-1 < index) {
-            long bitMask = 1L << index;
-            int bit = (int) ((resultBits & bitMask) >> index);
-            return fromBit(bit);
+            return fromBit(decode(resultBits, index));
         } else {
             throw new NoSuchElementException("Interpretation '" + interpretation + "' not found in truth table.");
         }
