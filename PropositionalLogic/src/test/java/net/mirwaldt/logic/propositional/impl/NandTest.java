@@ -1,14 +1,11 @@
 package net.mirwaldt.logic.propositional.impl;
 
+import net.mirwaldt.logic.propositional.api.Interpretation;
 import net.mirwaldt.logic.propositional.api.Proposition;
 import org.junit.jupiter.api.Test;
 
-import java.util.Map;
-
-import static net.mirwaldt.logic.propositional.impl.Interpretations.forMap;
 import static net.mirwaldt.logic.propositional.impl.Propositions.nand;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class NandTest {
     private final Proposition A = Propositions.variable("A");
@@ -23,9 +20,9 @@ public class NandTest {
 
     @Test
     void test_evaluate() {
-        assertFalse(A_NAND_B.evaluate(forMap(Map.of("A", true, "B", true))));
-        assertTrue(A_NAND_B.evaluate(forMap(Map.of("A", true, "B", false))));
-        assertTrue(A_NAND_B.evaluate(forMap(Map.of("A", false, "B", true))));
-        assertTrue(A_NAND_B.evaluate(forMap(Map.of("A", false, "B", false))));
+        assertFalse(A_NAND_B.evaluate(Interpretation.of("A", true, "B", true)));
+        assertTrue(A_NAND_B.evaluate(Interpretation.of("A", true, "B", false)));
+        assertTrue(A_NAND_B.evaluate(Interpretation.of("A", false, "B", true)));
+        assertTrue(A_NAND_B.evaluate(Interpretation.of("A", false, "B", false)));
     }
 }

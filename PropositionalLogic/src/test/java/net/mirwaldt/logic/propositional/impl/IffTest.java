@@ -1,11 +1,9 @@
 package net.mirwaldt.logic.propositional.impl;
 
+import net.mirwaldt.logic.propositional.api.Interpretation;
 import net.mirwaldt.logic.propositional.api.Proposition;
 import org.junit.jupiter.api.Test;
 
-import java.util.Map;
-
-import static net.mirwaldt.logic.propositional.impl.Interpretations.forMap;
 import static net.mirwaldt.logic.propositional.impl.Propositions.iff;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -22,9 +20,9 @@ public class IffTest {
 
     @Test
     void test_evaluate() {
-        assertTrue(A_IFF_B.evaluate(forMap(Map.of("A", true, "B", true))));
-        assertFalse(A_IFF_B.evaluate(forMap(Map.of("A", true, "B", false))));
-        assertFalse(A_IFF_B.evaluate(forMap(Map.of("A", false, "B", true))));
-        assertTrue(A_IFF_B.evaluate(forMap(Map.of("A", false, "B", false))));
+        assertTrue(A_IFF_B.evaluate(Interpretation.of("A", true, "B", true)));
+        assertFalse(A_IFF_B.evaluate(Interpretation.of("A", true, "B", false)));
+        assertFalse(A_IFF_B.evaluate(Interpretation.of("A", false, "B", true)));
+        assertTrue(A_IFF_B.evaluate(Interpretation.of("A", false, "B", false)));
     }
 }

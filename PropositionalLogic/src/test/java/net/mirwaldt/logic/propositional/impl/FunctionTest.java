@@ -1,12 +1,12 @@
 package net.mirwaldt.logic.propositional.impl;
 
+import net.mirwaldt.logic.propositional.api.Interpretation;
 import net.mirwaldt.logic.propositional.api.Proposition;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
 
 import static java.util.Map.entry;
-import static net.mirwaldt.logic.propositional.impl.Interpretations.forMap;
 import static net.mirwaldt.logic.propositional.impl.Propositions.function;
 import static net.mirwaldt.logic.propositional.util.PropositionUtils.fromBit;
 import static net.mirwaldt.logic.propositional.util.PropositionUtils.fromBits;
@@ -83,21 +83,21 @@ public class FunctionTest {
 
     @Test
     void test_evaluate() {
-        assertFalse(parity.evaluate(forMap(Map.of("B0", fromBit(0), "B1", fromBit(0), "B2", fromBit(0)))));
-        assertTrue(parity.evaluate(forMap(Map.of("B0", fromBit(0), "B1", fromBit(0), "B2", fromBit(1)))));
-        assertTrue(parity.evaluate(forMap(Map.of("B0", fromBit(0), "B1", fromBit(1), "B2", fromBit(0)))));
-        assertFalse(parity.evaluate(forMap(Map.of("B0", fromBit(0), "B1", fromBit(1), "B2", fromBit(1)))));
-        assertTrue(parity.evaluate(forMap(Map.of("B0", fromBit(1), "B1", fromBit(0), "B2", fromBit(0)))));
-        assertFalse(parity.evaluate(forMap(Map.of("B0", fromBit(1), "B1", fromBit(0), "B2", fromBit(1)))));
-        assertFalse(parity.evaluate(forMap(Map.of("B0", fromBit(1), "B1", fromBit(1), "B2", fromBit(0)))));
-        assertTrue(parity.evaluate(forMap(Map.of("B0", fromBit(1), "B1", fromBit(1), "B2", fromBit(1)))));
+        assertFalse(parity.evaluate(Interpretation.of("B0", fromBit(0), "B1", fromBit(0), "B2", fromBit(0))));
+        assertTrue(parity.evaluate(Interpretation.of("B0", fromBit(0), "B1", fromBit(0), "B2", fromBit(1))));
+        assertTrue(parity.evaluate(Interpretation.of("B0", fromBit(0), "B1", fromBit(1), "B2", fromBit(0))));
+        assertFalse(parity.evaluate(Interpretation.of("B0", fromBit(0), "B1", fromBit(1), "B2", fromBit(1))));
+        assertTrue(parity.evaluate(Interpretation.of("B0", fromBit(1), "B1", fromBit(0), "B2", fromBit(0))));
+        assertFalse(parity.evaluate(Interpretation.of("B0", fromBit(1), "B1", fromBit(0), "B2", fromBit(1))));
+        assertFalse(parity.evaluate(Interpretation.of("B0", fromBit(1), "B1", fromBit(1), "B2", fromBit(0))));
+        assertTrue(parity.evaluate(Interpretation.of("B0", fromBit(1), "B1", fromBit(1), "B2", fromBit(1))));
     }
 
     @Test
     void test_evaluate_incompleteFunction() {
-        assertFalse(incompleteParity.evaluate(forMap(Map.of("B0", fromBit(0), "B1", fromBit(0), "B2", fromBit(0)))));
+        assertFalse(incompleteParity.evaluate(Interpretation.of("B0", fromBit(0), "B1", fromBit(0), "B2", fromBit(0))));
         assertThrows(NoSuchElementException.class,
-                () -> incompleteParity.evaluate(forMap(Map.of("B0", fromBit(0), "B1", fromBit(0), "B2", fromBit(1)))));
+                () -> incompleteParity.evaluate(Interpretation.of("B0", fromBit(0), "B1", fromBit(0), "B2", fromBit(1))));
     }
     
     @Test

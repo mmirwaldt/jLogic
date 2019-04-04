@@ -1,13 +1,11 @@
 package net.mirwaldt.logic.propositional.impl;
 
+import net.mirwaldt.logic.propositional.api.Interpretation;
 import net.mirwaldt.logic.propositional.api.Proposition;
 import org.junit.jupiter.api.Test;
 
-import java.util.Collections;
 import java.util.Set;
 
-import static java.util.Collections.singletonMap;
-import static net.mirwaldt.logic.propositional.impl.Interpretations.forMap;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class NegateTest {
@@ -21,12 +19,12 @@ public class NegateTest {
 
     @Test
     void test_evaluateWithValueFalse() {
-        assertTrue(NEGATED_A.evaluate(forMap(singletonMap("A", false))));
+        assertTrue(NEGATED_A.evaluate(Interpretation.of("A", false)));
     }
 
     @Test
     void test_evaluateWithValueTrue() {
-        assertFalse(NEGATED_A.evaluate(forMap(singletonMap("A", true))));
+        assertFalse(NEGATED_A.evaluate(Interpretation.of("A", true)));
     }
 
     @Test

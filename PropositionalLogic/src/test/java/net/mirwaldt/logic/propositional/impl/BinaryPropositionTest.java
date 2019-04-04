@@ -1,12 +1,11 @@
 package net.mirwaldt.logic.propositional.impl;
 
+import net.mirwaldt.logic.propositional.api.Interpretation;
 import net.mirwaldt.logic.propositional.api.Proposition;
 import org.junit.jupiter.api.Test;
 
-import java.util.Map;
 import java.util.Set;
 
-import static net.mirwaldt.logic.propositional.impl.Interpretations.forMap;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class BinaryPropositionTest {
@@ -23,10 +22,10 @@ public class BinaryPropositionTest {
     
     @Test
     void test_evaluate() {
-        assertTrue(inverseImplication.evaluate(forMap(Map.of("A", true, "B", true))));
-        assertTrue(inverseImplication.evaluate(forMap(Map.of("A", true, "B", false))));
-        assertFalse(inverseImplication.evaluate(forMap(Map.of("A", false, "B", true))));
-        assertTrue(inverseImplication.evaluate(forMap(Map.of("A", false, "B", false))));
+        assertTrue(inverseImplication.evaluate(Interpretation.of("A", true, "B", true)));
+        assertTrue(inverseImplication.evaluate(Interpretation.of("A", true, "B", false)));
+        assertFalse(inverseImplication.evaluate(Interpretation.of("A", false, "B", true)));
+        assertTrue(inverseImplication.evaluate(Interpretation.of("A", false, "B", false)));
     }
 
     @Test

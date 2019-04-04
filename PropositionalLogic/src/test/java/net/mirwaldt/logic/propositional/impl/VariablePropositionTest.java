@@ -1,13 +1,12 @@
 package net.mirwaldt.logic.propositional.impl;
 
+import net.mirwaldt.logic.propositional.api.Interpretation;
 import net.mirwaldt.logic.propositional.api.Proposition;
 import org.junit.jupiter.api.Test;
 
-import java.util.Collections;
 import java.util.NoSuchElementException;
 import java.util.Set;
 
-import static net.mirwaldt.logic.propositional.impl.Interpretations.forMap;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class VariablePropositionTest {
@@ -24,23 +23,18 @@ public class VariablePropositionTest {
     }
 
     @Test
-    void test_evaluateWithoutValue_emptyMap() {
-        assertThrows(NoSuchElementException.class, () -> A.evaluate(forMap(Collections.emptyMap())));
-    }
-    
-    @Test
-    void test_evaluateWithoutValue_nonEmptyMap() {
-        assertThrows(NoSuchElementException.class, () -> A.evaluate(forMap(Collections.singletonMap("B", true))));
+    void test_evaluateWithoutValue() {
+        assertThrows(NoSuchElementException.class, () -> A.evaluate(Interpretation.of("B", true)));
     }
 
     @Test
     void test_evaluateWithValueFalse() {
-        assertFalse(A.evaluate(forMap(Collections.singletonMap("A", false))));
+        assertFalse(A.evaluate(Interpretation.of("A", false)));
     }
 
     @Test
     void test_evaluateWithValueTrue() {
-        assertTrue(A.evaluate(forMap(Collections.singletonMap("A", true))));
+        assertTrue(A.evaluate(Interpretation.of("A", true)));
     }
     
     @Test

@@ -1,15 +1,13 @@
 package net.mirwaldt.logic.propositional.impl;
 
+import net.mirwaldt.logic.propositional.api.Interpretation;
 import net.mirwaldt.logic.propositional.api.Proposition;
 import org.junit.jupiter.api.Test;
 
-import java.util.Map;
 import java.util.Set;
 
-import static net.mirwaldt.logic.propositional.impl.Interpretations.forMap;
 import static net.mirwaldt.logic.propositional.impl.Propositions.negate;
 import static net.mirwaldt.logic.propositional.impl.Propositions.or;
-import static net.mirwaldt.logic.propositional.util.PropositionUtils.fromBit;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class OrListTest {
@@ -28,37 +26,37 @@ public class OrListTest {
     @Test
     void test_evaluate() {
         assertTrue(NOT_A_OR_B_OR_NOT_C_OR_D.evaluate(
-                forMap(Map.of("A", fromBit(0), "B", fromBit(0), "C", fromBit(0), "D", fromBit(0)))));
+                Interpretation.of("A", 0, "B", 0, "C", 0, "D", 0)));
         assertTrue(NOT_A_OR_B_OR_NOT_C_OR_D.evaluate(
-                forMap(Map.of("A", fromBit(0), "B", fromBit(0), "C", fromBit(0), "D", fromBit(1)))));
+                Interpretation.of("A", 0, "B", 0, "C", 0, "D", 1)));
         assertTrue(NOT_A_OR_B_OR_NOT_C_OR_D.evaluate(
-                forMap(Map.of("A", fromBit(0), "B", fromBit(0), "C", fromBit(1), "D", fromBit(0)))));
+                Interpretation.of("A", 0, "B", 0, "C", 1, "D", 0)));
         assertTrue(NOT_A_OR_B_OR_NOT_C_OR_D.evaluate(
-                forMap(Map.of("A", fromBit(0), "B", fromBit(0), "C", fromBit(1), "D", fromBit(1)))));
+                Interpretation.of("A", 0, "B", 0, "C", 1, "D", 1)));
         assertTrue(NOT_A_OR_B_OR_NOT_C_OR_D.evaluate(
-                forMap(Map.of("A", fromBit(0), "B", fromBit(1), "C", fromBit(0), "D", fromBit(0)))));
+                Interpretation.of("A", 0, "B", 1, "C", 0, "D", 0)));
         assertTrue(NOT_A_OR_B_OR_NOT_C_OR_D.evaluate(
-                forMap(Map.of("A", fromBit(0), "B", fromBit(1), "C", fromBit(0), "D", fromBit(1)))));
+                Interpretation.of("A", 0, "B", 1, "C", 0, "D", 1)));
         assertTrue(NOT_A_OR_B_OR_NOT_C_OR_D.evaluate(
-                forMap(Map.of("A", fromBit(0), "B", fromBit(1), "C", fromBit(1), "D", fromBit(0)))));
+                Interpretation.of("A", 0, "B", 1, "C", 1, "D", 0)));
         assertTrue(NOT_A_OR_B_OR_NOT_C_OR_D.evaluate(
-                forMap(Map.of("A", fromBit(0), "B", fromBit(1), "C", fromBit(1), "D", fromBit(1)))));
+                Interpretation.of("A", 0, "B", 1, "C", 1, "D", 1)));
         assertTrue(NOT_A_OR_B_OR_NOT_C_OR_D.evaluate(
-                forMap(Map.of("A", fromBit(1), "B", fromBit(0), "C", fromBit(0), "D", fromBit(0)))));
+                Interpretation.of("A", 1, "B", 0, "C", 0, "D", 0)));
         assertTrue(NOT_A_OR_B_OR_NOT_C_OR_D.evaluate(
-                forMap(Map.of("A", fromBit(1), "B", fromBit(0), "C", fromBit(0), "D", fromBit(1)))));
+                Interpretation.of("A", 1, "B", 0, "C", 0, "D", 1)));
         assertFalse(NOT_A_OR_B_OR_NOT_C_OR_D.evaluate(
-                forMap(Map.of("A", fromBit(1), "B", fromBit(0), "C", fromBit(1), "D", fromBit(0)))));
+                Interpretation.of("A", 1, "B", 0, "C", 1, "D", 0)));
         assertTrue(NOT_A_OR_B_OR_NOT_C_OR_D.evaluate(
-                forMap(Map.of("A", fromBit(1), "B", fromBit(0), "C", fromBit(1), "D", fromBit(1)))));
+                Interpretation.of("A", 1, "B", 0, "C", 1, "D", 1)));
         assertTrue(NOT_A_OR_B_OR_NOT_C_OR_D.evaluate(
-                forMap(Map.of("A", fromBit(1), "B", fromBit(1), "C", fromBit(0), "D", fromBit(0)))));
+                Interpretation.of("A", 1, "B", 1, "C", 0, "D", 0)));
         assertTrue(NOT_A_OR_B_OR_NOT_C_OR_D.evaluate(
-                forMap(Map.of("A", fromBit(1), "B", fromBit(1), "C", fromBit(0), "D", fromBit(1)))));
+                Interpretation.of("A", 1, "B", 1, "C", 0, "D", 1)));
         assertTrue(NOT_A_OR_B_OR_NOT_C_OR_D.evaluate(
-                forMap(Map.of("A", fromBit(1), "B", fromBit(1), "C", fromBit(1), "D", fromBit(0)))));
+                Interpretation.of("A", 1, "B", 1, "C", 1, "D", 0)));
         assertTrue(NOT_A_OR_B_OR_NOT_C_OR_D.evaluate(
-                forMap(Map.of("A", fromBit(1), "B", fromBit(1), "C", fromBit(1), "D", fromBit(1)))));
+                Interpretation.of("A", 1, "B", 1, "C", 1, "D", 1)));
     }
     
     @Test
