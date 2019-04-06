@@ -26,4 +26,46 @@ public interface Proposition {
     }
     
     Set<String> findVariableNames();
+    
+    default Proposition negate() {
+        return Propositions.negate(this);
+    }
+    
+    default Proposition and(Proposition otherProposition) {
+        return Propositions.and(this, otherProposition);
+    }
+    
+    default Proposition and(Proposition secondProposition, Proposition thirdProposition, 
+                            Proposition...otherPropositions) {
+        return Propositions.and(this, secondProposition, thirdProposition, otherPropositions);
+    }
+    
+    default Proposition or(Proposition otherProposition) {
+        return Propositions.or(this, otherProposition);
+    }
+
+    default Proposition or(Proposition secondProposition, Proposition thirdProposition,
+                            Proposition...otherPropositions) {
+        return Propositions.or(this, secondProposition, thirdProposition, otherPropositions);
+    }
+    
+    default Proposition xor(Proposition otherProposition) {
+        return Propositions.xor(this, otherProposition);
+    }
+    
+    default Proposition imply(Proposition otherProposition) {
+        return Propositions.imply(this, otherProposition);
+    }
+
+    default Proposition iff(Proposition otherProposition) {
+        return Propositions.iff(this, otherProposition);
+    }
+    
+    default Proposition nand(Proposition otherProposition) {
+        return Propositions.nand(this, otherProposition);
+    }
+    
+    default Proposition nor(Proposition otherProposition) {
+        return Propositions.nor(this, otherProposition);
+    }
 }
