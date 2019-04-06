@@ -15,7 +15,6 @@ public class ValuePropositionTest {
         assertEquals(String.valueOf(1), TRUE.toExpression());
         assertTrue(TRUE.evaluate(Interpretation.of("A", 1)));
         assertEquals(Collections.emptySet(), TRUE.findVariableNames());
-        assertEquals(FALSE, TRUE.negate());
     }
 
     @Test
@@ -23,6 +22,5 @@ public class ValuePropositionTest {
         assertEquals(String.valueOf(0), FALSE.toExpression());
         assertFalse(FALSE.evaluate(Interpretation.of("A", 1)));
         assertEquals(Collections.emptySet(), FALSE.findVariableNames());
-        assertEquals(TRUE, FALSE.negate());
     }
 }

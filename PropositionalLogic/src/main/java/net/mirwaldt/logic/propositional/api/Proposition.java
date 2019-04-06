@@ -26,8 +26,4 @@ public interface Proposition {
     }
     
     Set<String> findVariableNames();
-    
-    default Proposition negate() {
-        return Propositions.negate(this);
-    }
 }

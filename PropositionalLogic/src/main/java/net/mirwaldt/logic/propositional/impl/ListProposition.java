@@ -3,9 +3,11 @@ package net.mirwaldt.logic.propositional.impl;
 import net.mirwaldt.logic.propositional.api.Interpretation;
 import net.mirwaldt.logic.propositional.api.MultiProposition;
 import net.mirwaldt.logic.propositional.api.Proposition;
+import net.mirwaldt.logic.propositional.util.LambdaObjects;
 import net.mirwaldt.logic.propositional.util.api.BiBooleanPredicate;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -17,8 +19,7 @@ public class ListProposition implements MultiProposition {
     private final BiBooleanPredicate biBooleanPredicate;
     private final String expressionTemplate;
 
-    public ListProposition(List<Proposition> propositions,
-                           BiBooleanPredicate biBooleanPredicate,
+    public ListProposition(List<Proposition> propositions, BiBooleanPredicate biBooleanPredicate,
                            String expressionTemplate) {
         this.propositions = propositions;
         this.biBooleanPredicate = biBooleanPredicate;
@@ -57,5 +58,20 @@ public class ListProposition implements MultiProposition {
         return propositions.stream()
                 .flatMap(proposition -> proposition.findVariableNames().stream())
                 .collect(Collectors.toSet());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ListProposition that = (ListProposition) o;
+        return Objects.equals(propositions, that.propositions) &&
+                LambdaObjects.equals(biBooleanPredicate, that.biBooleanPredicate) &&
+                Objects.equals(expressionTemplate, that.expressionTemplate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(propositions, LambdaObjects.hash(biBooleanPredicate), expressionTemplate);
     }
 }

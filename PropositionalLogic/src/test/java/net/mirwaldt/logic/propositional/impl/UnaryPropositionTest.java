@@ -13,7 +13,6 @@ import static org.junit.jupiter.api.Assertions.*;
 public class UnaryPropositionTest {
     private final Proposition identity = Propositions.unary(TRUE,
             BooleanPredicate.identity(), "%s");
-    private final Proposition negatedIdentity = identity.negate();
 
     @Test
     void test_wrongExpressionTemplate() {

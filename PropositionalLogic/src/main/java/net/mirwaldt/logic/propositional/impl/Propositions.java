@@ -1,6 +1,5 @@
 package net.mirwaldt.logic.propositional.impl;
 
-import net.mirwaldt.logic.propositional.api.BinaryPropositionNegator;
 import net.mirwaldt.logic.propositional.api.Interpretation;
 import net.mirwaldt.logic.propositional.api.Proposition;
 import net.mirwaldt.logic.propositional.util.api.BiBooleanPredicate;
@@ -23,10 +22,6 @@ public class Propositions {
     private final static String AND_EXPRESSION_TEMPLATE = "%s ∧ %s";
     private final static String OR_EXPRESSION_TEMPLATE = "%s ∨ %s";
     
-    // DeMorgan's Laws
-    private final static BinaryPropositionNegator BINARY_AND_NEGATOR = (left, right) -> or(negate(left), negate(right));
-    private final static BinaryPropositionNegator BINARY_OR_NEGATOR = (left, right) -> and(negate(left), negate(right));
-
     public static VariableProposition variable(String variableId) {
         return new VariableProposition(variableId);
     }
@@ -49,32 +44,28 @@ public class Propositions {
     }
 
     public static Proposition binary(Proposition leftProposition, Proposition rightProposition,
-                                     BiBooleanPredicate biBooleanPredicate, String expressionTemplate,
-                                     BinaryPropositionNegator negator) {
-        return new BinaryProposition(leftProposition, rightProposition, biBooleanPredicate, expressionTemplate, negator);
+                                     BiBooleanPredicate biBooleanPredicate, String expressionTemplate) {
+        return new BinaryProposition(leftProposition, rightProposition, biBooleanPredicate, expressionTemplate);
     }
 
     public static Proposition and(Proposition leftProposition, Proposition rightProposition) {
-        return binary(leftProposition, rightProposition, AND_OPERATOR, AND_EXPRESSION_TEMPLATE, BINARY_AND_NEGATOR);
+        return binary(leftProposition, rightProposition, AND_OPERATOR, AND_EXPRESSION_TEMPLATE);
     }
 
     public static Proposition or(Proposition leftProposition, Proposition rightProposition) {
-        return binary(leftProposition, rightProposition, OR_OPERATOR, OR_EXPRESSION_TEMPLATE, BINARY_OR_NEGATOR);
+        return binary(leftProposition, rightProposition, OR_OPERATOR, OR_EXPRESSION_TEMPLATE);
     }
 
     public static Proposition xor(Proposition leftProposition, Proposition rightProposition) {
-        return binary(leftProposition, rightProposition, (left, right) -> left ^ right, "%s ⩒ %s",
-                Propositions::iff);
+        return binary(leftProposition, rightProposition, (left, right) -> left ^ right, "%s ⩒ %s");
     }
 
     public static Proposition imply(Proposition leftProposition, Proposition rightProposition) {
-        return binary(leftProposition, rightProposition, (left, right) -> !left | right, "%s → %s",
-                (left, right) -> and(left, negate(right)));
+        return binary(leftProposition, rightProposition, (left, right) -> !left | right, "%s → %s");
     }
 
     public static Proposition iff(Proposition leftProposition, Proposition rightProposition) {
-        return binary(leftProposition, rightProposition, (left, right) -> left == right, "%s ↔ %s",
-                Propositions::xor);
+        return binary(leftProposition, rightProposition, (left, right) -> left == right, "%s ↔ %s");
     }
 
     public static Proposition nand(Proposition leftProposition, Proposition rightProposition) {

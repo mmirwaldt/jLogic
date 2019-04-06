@@ -3,11 +3,9 @@ package net.mirwaldt.logic.propositional.impl;
 import net.mirwaldt.logic.propositional.api.Interpretation;
 import net.mirwaldt.logic.propositional.api.MultiProposition;
 import net.mirwaldt.logic.propositional.api.Proposition;
-import net.mirwaldt.logic.propositional.api.BinaryPropositionNegator;
 import net.mirwaldt.logic.propositional.util.LambdaObjects;
 import net.mirwaldt.logic.propositional.util.api.BiBooleanPredicate;
 
-import java.util.Collections;
 import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -20,16 +18,13 @@ public class BinaryProposition implements MultiProposition {
     private final Proposition rightProposition;
     private final BiBooleanPredicate biBooleanPredicate;
     private final String expressionTemplate;
-    private final BinaryPropositionNegator negator;
 
     public BinaryProposition(Proposition leftProposition, Proposition rightProposition, 
-                             BiBooleanPredicate biBooleanPredicate, String expressionTemplate,
-                             BinaryPropositionNegator negator) {
+                             BiBooleanPredicate biBooleanPredicate, String expressionTemplate) {
         this.leftProposition = leftProposition;
         this.rightProposition = rightProposition;
         this.biBooleanPredicate = biBooleanPredicate;
         this.expressionTemplate = expressionTemplate;
-        this.negator = negator;
 
         final int placeholderCount = frequencyOfSubstring(expressionTemplate);
         if(2 != placeholderCount) {
@@ -70,18 +65,12 @@ public class BinaryProposition implements MultiProposition {
         return Objects.equals(leftProposition, that.leftProposition) &&
                 Objects.equals(rightProposition, that.rightProposition) &&
                 LambdaObjects.equals(biBooleanPredicate, that.biBooleanPredicate) &&
-                LambdaObjects.equals(negator, that.negator) &&
                 Objects.equals(expressionTemplate, that.expressionTemplate);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(leftProposition, rightProposition, 
-                LambdaObjects.hash(biBooleanPredicate), LambdaObjects.hash(negator), expressionTemplate);
-    }
-
-    @Override
-    public Proposition negate() {
-        return negator.apply(leftProposition, rightProposition);
+                LambdaObjects.hash(biBooleanPredicate), expressionTemplate);
     }
 }

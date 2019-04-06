@@ -30,11 +30,6 @@ public class ValueProposition implements Proposition {
     public Set<String> findVariableNames() {
         return Collections.emptySet();
     }
-
-    @Override
-    public Proposition negate() {
-        return value(!value);
-    }
     
     @Override
     public boolean equals(Object o) {

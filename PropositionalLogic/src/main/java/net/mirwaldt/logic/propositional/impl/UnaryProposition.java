@@ -56,9 +56,4 @@ public class UnaryProposition implements Proposition {
     public int hashCode() {
         return Objects.hash(proposition, LambdaObjects.hash(booleanPredicate), expressionTemplate);
     }
-
-    @Override
-    public Proposition negate() {
-        return proposition.negate();
-    }
 }
