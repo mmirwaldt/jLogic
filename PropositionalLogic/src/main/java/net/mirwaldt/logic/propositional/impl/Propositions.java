@@ -10,6 +10,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * do not use not-operator implicit in the lambda when you create and unary or binary proposition!
+ * It confuses the expression building algorithm and the negating.
+ */
 public class Propositions {
     public final static ValueProposition FALSE = new ValueProposition(false);
     public final static ValueProposition TRUE = new ValueProposition(true);
