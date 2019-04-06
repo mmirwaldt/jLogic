@@ -4,6 +4,8 @@ import net.mirwaldt.logic.propositional.api.Interpretation;
 import net.mirwaldt.logic.propositional.api.Proposition;
 import org.junit.jupiter.api.Test;
 
+import java.util.Set;
+
 import static net.mirwaldt.logic.propositional.impl.Propositions.iff;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -12,10 +14,12 @@ public class IffTest {
     private final Proposition B = Propositions.variable("B");
     
     private final Proposition A_IFF_B = iff(A, B);
+    private final Proposition NEGATED_A_IFF_B = A_IFF_B.negate();
 
     @Test
     void test_expression() {
         assertEquals("A ↔ B", A_IFF_B.toExpression());
+        assertEquals("A ⩒ B", NEGATED_A_IFF_B.toExpression());
     }
 
     @Test
@@ -24,5 +28,16 @@ public class IffTest {
         assertFalse(A_IFF_B.evaluate(Interpretation.of("A", true, "B", false)));
         assertFalse(A_IFF_B.evaluate(Interpretation.of("A", false, "B", true)));
         assertTrue(A_IFF_B.evaluate(Interpretation.of("A", false, "B", false)));
+
+        assertFalse(NEGATED_A_IFF_B.evaluate(Interpretation.of("A", true, "B", true)));
+        assertTrue(NEGATED_A_IFF_B.evaluate(Interpretation.of("A", true, "B", false)));
+        assertTrue(NEGATED_A_IFF_B.evaluate(Interpretation.of("A", false, "B", true)));
+        assertFalse(NEGATED_A_IFF_B.evaluate(Interpretation.of("A", false, "B", false)));
+    }
+    
+    @Test
+    void test_findVariableNames() {
+        assertEquals(Set.of("A", "B"), A_IFF_B.findVariableNames());
+        assertEquals(Set.of("A", "B"), NEGATED_A_IFF_B.findVariableNames());
     }
 }

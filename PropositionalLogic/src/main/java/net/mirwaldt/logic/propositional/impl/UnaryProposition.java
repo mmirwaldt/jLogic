@@ -2,8 +2,10 @@ package net.mirwaldt.logic.propositional.impl;
 
 import net.mirwaldt.logic.propositional.api.Interpretation;
 import net.mirwaldt.logic.propositional.api.Proposition;
+import net.mirwaldt.logic.propositional.util.LambdaObjects;
 import net.mirwaldt.logic.propositional.util.api.BooleanPredicate;
 
+import java.util.Objects;
 import java.util.Set;
 
 import static net.mirwaldt.logic.propositional.util.PropositionUtils.toFinalExpression;
@@ -38,5 +40,25 @@ public class UnaryProposition implements Proposition {
     @Override
     public Set<String> findVariableNames() {
         return proposition.findVariableNames();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UnaryProposition that = (UnaryProposition) o;
+        return Objects.equals(proposition, that.proposition) &&
+                LambdaObjects.equals(booleanPredicate, that.booleanPredicate) &&
+                Objects.equals(expressionTemplate, that.expressionTemplate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(proposition, LambdaObjects.hash(booleanPredicate), expressionTemplate);
+    }
+
+    @Override
+    public Proposition negate() {
+        return proposition.negate();
     }
 }

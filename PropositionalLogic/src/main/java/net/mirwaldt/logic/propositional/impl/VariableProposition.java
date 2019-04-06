@@ -31,6 +31,17 @@ public class VariableProposition implements Proposition {
     public String getVariableName() {
         return variableName;
     }
-    
-    
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        VariableProposition that = (VariableProposition) o;
+        return Objects.equals(variableName, that.variableName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(variableName);
+    }
 }

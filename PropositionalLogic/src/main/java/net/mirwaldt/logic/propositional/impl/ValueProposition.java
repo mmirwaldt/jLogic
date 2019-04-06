@@ -4,8 +4,10 @@ import net.mirwaldt.logic.propositional.api.Interpretation;
 import net.mirwaldt.logic.propositional.api.Proposition;
 
 import java.util.Collections;
+import java.util.Objects;
 import java.util.Set;
 
+import static net.mirwaldt.logic.propositional.impl.Propositions.value;
 import static net.mirwaldt.logic.propositional.util.PropositionUtils.toBit;
 
 public class ValueProposition implements Proposition {
@@ -27,5 +29,23 @@ public class ValueProposition implements Proposition {
     @Override
     public Set<String> findVariableNames() {
         return Collections.emptySet();
+    }
+
+    @Override
+    public Proposition negate() {
+        return value(!value);
+    }
+    
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ValueProposition that = (ValueProposition) o;
+        return value == that.value;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value);
     }
 }

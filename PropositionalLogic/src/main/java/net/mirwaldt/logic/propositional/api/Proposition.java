@@ -1,5 +1,7 @@
 package net.mirwaldt.logic.propositional.api;
 
+import net.mirwaldt.logic.propositional.impl.Propositions;
+
 import java.util.Set;
 
 import static net.mirwaldt.logic.propositional.util.PropositionUtils.toBit;
@@ -24,4 +26,8 @@ public interface Proposition {
     }
     
     Set<String> findVariableNames();
+    
+    default Proposition negate() {
+        return Propositions.negate(this);
+    }
 }

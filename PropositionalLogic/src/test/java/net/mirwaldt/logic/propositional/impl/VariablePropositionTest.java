@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.util.NoSuchElementException;
 import java.util.Set;
 
+import static net.mirwaldt.logic.propositional.impl.Propositions.negate;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class VariablePropositionTest {
@@ -40,5 +41,10 @@ public class VariablePropositionTest {
     @Test
     void test_findVariableNames() {
         assertEquals(Set.of("A"), A.findVariableNames());
+    }
+    
+    @Test
+    void test_negate() {
+        assertEquals(negate(A), A.negate());
     }
 }
