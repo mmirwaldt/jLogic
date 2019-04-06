@@ -42,34 +42,74 @@ public class FunctionTest {
                     , 7, 1);
 
     private final Proposition prime = function("prime", parameters, interpretations, resultBits);
-    private final Proposition incompletePrime = function("prime", parameters, incompleteInterpretations, 0);
+    private final Proposition negatedPrime = prime.negate();
+    private final Proposition incompletePrime = 
+            function("prime", parameters, incompleteInterpretations, 0);
+    private final Proposition negatedIncompletePrime = incompletePrime.negate();
     
     @Test
     void test_toExpression() {
         assertEquals("prime(B0,B1,B2)", prime.toExpression());
+        assertEquals("¬prime(B0,B1,B2)", negatedPrime.toExpression());
     }
 
     @Test
     void test_evaluate() {
-        assertFalse(prime.evaluate(Interpretation.of("B0", fromBit(0), "B1", fromBit(0), "B2", fromBit(0))));
-        assertFalse(prime.evaluate(Interpretation.of("B0", fromBit(0), "B1", fromBit(0), "B2", fromBit(1))));
-        assertTrue(prime.evaluate(Interpretation.of("B0", fromBit(0), "B1", fromBit(1), "B2", fromBit(0))));
-        assertTrue(prime.evaluate(Interpretation.of("B0", fromBit(0), "B1", fromBit(1), "B2", fromBit(1))));
-        assertFalse(prime.evaluate(Interpretation.of("B0", fromBit(1), "B1", fromBit(0), "B2", fromBit(0))));
-        assertTrue(prime.evaluate(Interpretation.of("B0", fromBit(1), "B1", fromBit(0), "B2", fromBit(1))));
-        assertFalse(prime.evaluate(Interpretation.of("B0", fromBit(1), "B1", fromBit(1), "B2", fromBit(0))));
-        assertTrue(prime.evaluate(Interpretation.of("B0", fromBit(1), "B1", fromBit(1), "B2", fromBit(1))));
+        assertFalse(prime.evaluate(
+                Interpretation.of("B0", fromBit(0), "B1", fromBit(0), "B2", fromBit(0))));
+        assertFalse(prime.evaluate(
+                Interpretation.of("B0", fromBit(0), "B1", fromBit(0), "B2", fromBit(1))));
+        assertTrue(prime.evaluate(
+                Interpretation.of("B0", fromBit(0), "B1", fromBit(1), "B2", fromBit(0))));
+        assertTrue(prime.evaluate(
+                Interpretation.of("B0", fromBit(0), "B1", fromBit(1), "B2", fromBit(1))));
+        assertFalse(prime.evaluate(
+                Interpretation.of("B0", fromBit(1), "B1", fromBit(0), "B2", fromBit(0))));
+        assertTrue(prime.evaluate(
+                Interpretation.of("B0", fromBit(1), "B1", fromBit(0), "B2", fromBit(1))));
+        assertFalse(prime.evaluate(
+                Interpretation.of("B0", fromBit(1), "B1", fromBit(1), "B2", fromBit(0))));
+        assertTrue(prime.evaluate(
+                Interpretation.of("B0", fromBit(1), "B1", fromBit(1), "B2", fromBit(1))));
+        
+        assertTrue(negatedPrime.evaluate(
+                Interpretation.of("B0", fromBit(0), "B1", fromBit(0), "B2", fromBit(0))));
+        assertTrue(negatedPrime.evaluate(
+                Interpretation.of("B0", fromBit(0), "B1", fromBit(0), "B2", fromBit(1))));
+        assertFalse(negatedPrime.evaluate(
+                Interpretation.of("B0", fromBit(0), "B1", fromBit(1), "B2", fromBit(0))));
+        assertFalse(negatedPrime.evaluate(
+                Interpretation.of("B0", fromBit(0), "B1", fromBit(1), "B2", fromBit(1))));
+        assertTrue(negatedPrime.evaluate(
+                Interpretation.of("B0", fromBit(1), "B1", fromBit(0), "B2", fromBit(0))));
+        assertFalse(negatedPrime.evaluate(
+                Interpretation.of("B0", fromBit(1), "B1", fromBit(0), "B2", fromBit(1))));
+        assertTrue(negatedPrime.evaluate(
+                Interpretation.of("B0", fromBit(1), "B1", fromBit(1), "B2", fromBit(0))));
+        assertFalse(negatedPrime.evaluate(
+                Interpretation.of("B0", fromBit(1), "B1", fromBit(1), "B2", fromBit(1))));
     }
 
     @Test
     void test_evaluate_incompleteFunction() {
-        assertFalse(incompletePrime.evaluate(Interpretation.of("B0", fromBit(0), "B1", fromBit(0), "B2", fromBit(0))));
+        assertFalse(incompletePrime.evaluate(
+                Interpretation.of("B0", fromBit(0), "B1", fromBit(0), "B2", fromBit(0))));
         assertThrows(NoSuchElementException.class,
-                () -> incompletePrime.evaluate(Interpretation.of("B0", fromBit(0), "B1", fromBit(0), "B2", fromBit(1))));
+                () -> incompletePrime.evaluate(
+                        Interpretation.of("B0", fromBit(0), "B1", fromBit(0), "B2", fromBit(1))));
+        
+        assertTrue(negatedIncompletePrime.evaluate(
+                Interpretation.of("B0", fromBit(0), "B1", fromBit(0), "B2", fromBit(0))));
+        assertThrows(NoSuchElementException.class,
+                () -> negatedIncompletePrime.evaluate(
+                        Interpretation.of("B0", fromBit(0), "B1", fromBit(0), "B2", fromBit(1))));
     }
 
     @Test
     void test_findVariableNames() {
         assertEquals(Set.of("B0", "B1", "B2"), prime.findVariableNames());
+        assertEquals(Set.of("B0", "B1", "B2"), negatedPrime.findVariableNames());
+        assertEquals(Set.of("B0", "B1", "B2"), negatedIncompletePrime.findVariableNames());
+        assertEquals(Set.of("B0", "B1", "B2"), negatedIncompletePrime.findVariableNames());
     }
 }
