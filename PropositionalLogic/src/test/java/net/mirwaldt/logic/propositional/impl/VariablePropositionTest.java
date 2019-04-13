@@ -7,14 +7,15 @@ import org.junit.jupiter.api.Test;
 import java.util.NoSuchElementException;
 import java.util.Set;
 
+import static net.mirwaldt.logic.propositional.impl.Propositions.variable;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class VariablePropositionTest {
-    private final Proposition A = Propositions.variable("A");
+    private final Proposition A = variable("A");
 
     @Test
     void test_nullForbidden() {
-        assertThrows(NullPointerException.class, () -> Propositions.variable(null));
+        assertThrows(NullPointerException.class, () -> variable(null));
     }
 
     @Test

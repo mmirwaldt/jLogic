@@ -13,7 +13,7 @@ public class OrTest {
     private final Proposition A = Propositions.variable("A");
     private final Proposition B = Propositions.variable("B");
     
-    private final Proposition A_OR_B = or(A, B);
+    private final Proposition A_OR_B = A.or(B);
 
     @Test
     void test_expression() {

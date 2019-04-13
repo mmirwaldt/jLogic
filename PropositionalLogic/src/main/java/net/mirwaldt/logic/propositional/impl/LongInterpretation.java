@@ -47,17 +47,6 @@ public class LongInterpretation implements Interpretation {
     }
 
     @Override
-    public String asBitsWhitespaceSeparated() {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (int index = 0; index < variableNames.size(); index++) {
-            stringBuilder.append(decode(bits, index));
-            stringBuilder.append(" ");
-        }
-        stringBuilder.delete(stringBuilder.length() - 1, stringBuilder.length());
-        return stringBuilder.toString();
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null) return false;

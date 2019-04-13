@@ -34,19 +34,9 @@ public interface Proposition {
     default Proposition and(Proposition otherProposition) {
         return Propositions.and(this, otherProposition);
     }
-    
-    default Proposition and(Proposition secondProposition, Proposition thirdProposition, 
-                            Proposition...otherPropositions) {
-        return Propositions.and(this, secondProposition, thirdProposition, otherPropositions);
-    }
-    
+        
     default Proposition or(Proposition otherProposition) {
         return Propositions.or(this, otherProposition);
-    }
-
-    default Proposition or(Proposition secondProposition, Proposition thirdProposition,
-                            Proposition...otherPropositions) {
-        return Propositions.or(this, secondProposition, thirdProposition, otherPropositions);
     }
     
     default Proposition xor(Proposition otherProposition) {

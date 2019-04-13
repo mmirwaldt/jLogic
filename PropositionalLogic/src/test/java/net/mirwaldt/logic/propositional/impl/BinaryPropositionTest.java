@@ -6,14 +6,14 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Set;
 
-import static net.mirwaldt.logic.propositional.impl.Propositions.negate;
+import static net.mirwaldt.logic.propositional.impl.Propositions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class BinaryPropositionTest {
-    private final Proposition A = Propositions.variable("A");
-    private final Proposition B = Propositions.variable("B");
+    private final Proposition A = variable("A");
+    private final Proposition B = variable("B");
     
-    private final Proposition inverseImplication = Propositions.binary(A, negate(B),
+    private final Proposition inverseImplication = binary(A, not(B),
             (left, right) -> left | right, "%s ∨ %s");
 
     @Test

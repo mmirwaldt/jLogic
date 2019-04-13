@@ -11,7 +11,7 @@ public class NandTest {
     private final Proposition A = Propositions.variable("A");
     private final Proposition B = Propositions.variable("B");
 
-    private final Proposition A_NAND_B = nand(A, B);
+    private final Proposition A_NAND_B = A.nand(B);
 
     @Test
     void test_expression() {

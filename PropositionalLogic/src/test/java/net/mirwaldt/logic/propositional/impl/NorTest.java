@@ -11,7 +11,7 @@ public class NorTest {
     private final Proposition A = Propositions.variable("A");
     private final Proposition B = Propositions.variable("B");
 
-    private final Proposition A_NOR_B = nor(A, B);
+    private final Proposition A_NOR_B = A.nor(B);
 
     @Test
     void test_expression() {

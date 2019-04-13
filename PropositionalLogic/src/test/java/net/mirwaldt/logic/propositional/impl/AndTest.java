@@ -13,7 +13,7 @@ public class AndTest {
     private final Proposition A = Propositions.variable("A");
     private final Proposition B = Propositions.variable("B");
     
-    private final Proposition A_AND_B = and(A, B);
+    private final Proposition A_AND_B = A.and(B);
 
     @Test
     void test_expression() {

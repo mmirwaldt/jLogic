@@ -13,7 +13,7 @@ public class XOrTest {
     private final Proposition A = Propositions.variable("A");
     private final Proposition B = Propositions.variable("B");
     
-    private final Proposition A_XOR_B = xor(A, B);
+    private final Proposition A_XOR_B = A.xor(B);
 
     @Test
     void test_expression() {

@@ -9,9 +9,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import static net.mirwaldt.logic.propositional.util.PropositionUtils.fromBit;
+
 /**
- * do not use not-operator implicit in the lambda when you create and unary or binary proposition!
- * It confuses the expression building algorithm and the negating.
+ * do not use not-operator implicit in the lambda when you create an unary or a binary proposition!
+ * It confuses the expression building algorithm.
  */
 public class Propositions {
     public final static ValueProposition FALSE = new ValueProposition(false);
@@ -34,13 +36,25 @@ public class Propositions {
         }
     }
 
+    public static Proposition value(int value) {
+        if (fromBit(value)) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
+
     public static Proposition unary(
             Proposition proposition, BooleanPredicate booleanPredicate, String expressionTemplate) {
         return new UnaryProposition(proposition, booleanPredicate, expressionTemplate);
     }
-
-    public static Proposition negate(Proposition proposition) {
+    
+    public static Proposition not(Proposition proposition) {
         return unary(proposition, (BooleanPredicate) ((value) -> !value), "¬%s");
+    }
+    
+    public static Proposition negate(Proposition proposition) {
+        return not(proposition);
     }
 
     public static Proposition binary(Proposition leftProposition, Proposition rightProposition,

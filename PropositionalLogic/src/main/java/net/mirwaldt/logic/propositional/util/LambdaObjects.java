@@ -19,13 +19,13 @@ public class LambdaObjects {
      */
     public static boolean equals(Serializable leftLambda, Serializable rightLambda) {
         try {
-            ByteArrayOutputStream leftByteStream = new ByteArrayOutputStream();
-            ObjectOutputStream leftObjectStream = new ObjectOutputStream(leftByteStream);
+            final ByteArrayOutputStream leftByteStream = new ByteArrayOutputStream();
+            final ObjectOutputStream leftObjectStream = new ObjectOutputStream(leftByteStream);
             leftObjectStream.writeObject(leftLambda);
             leftObjectStream.close();
 
-            ByteArrayOutputStream rightByteStream = new ByteArrayOutputStream();
-            ObjectOutputStream rightObjectStream = new ObjectOutputStream(rightByteStream);
+            final ByteArrayOutputStream rightByteStream = new ByteArrayOutputStream();
+            final ObjectOutputStream rightObjectStream = new ObjectOutputStream(rightByteStream);
             rightObjectStream.writeObject(rightLambda);
             rightObjectStream.close();
 

@@ -17,7 +17,7 @@ public class ComplexPropositionTest {
     private final Proposition C = Propositions.variable("C");
     private final Proposition D = Propositions.variable("D");
     
-    private final Proposition complex = nand(or(A, B),imply(negate(C), D));
+    private final Proposition complex = (A.or(B)).nand(not(C).imply(D));
     
     @Test
     void test_toExpression() {

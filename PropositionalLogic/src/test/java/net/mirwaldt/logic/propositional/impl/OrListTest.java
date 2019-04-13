@@ -6,8 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Set;
 
-import static net.mirwaldt.logic.propositional.impl.Propositions.negate;
-import static net.mirwaldt.logic.propositional.impl.Propositions.or;
+import static net.mirwaldt.logic.propositional.impl.Propositions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class OrListTest {
@@ -16,7 +15,7 @@ public class OrListTest {
     private final Proposition C = Propositions.variable("C");
     private final Proposition D = Propositions.variable("D");
 
-    private final Proposition NOT_A_OR_B_OR_NOT_C_OR_D = or(negate(A), B, negate(C), D);
+    private final Proposition NOT_A_OR_B_OR_NOT_C_OR_D = or(not(A), B, not(C), D);
 
     @Test
     void test_expression() {

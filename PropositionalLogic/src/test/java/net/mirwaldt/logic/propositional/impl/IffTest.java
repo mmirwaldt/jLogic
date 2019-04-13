@@ -13,7 +13,7 @@ public class IffTest {
     private final Proposition A = Propositions.variable("A");
     private final Proposition B = Propositions.variable("B");
     
-    private final Proposition A_IFF_B = iff(A, B);
+    private final Proposition A_IFF_B = A.iff(B);
 
     @Test
     void test_expression() {

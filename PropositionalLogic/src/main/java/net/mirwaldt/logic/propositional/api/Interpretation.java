@@ -6,7 +6,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static net.mirwaldt.logic.propositional.util.BitUtils.encode;
+import static java.util.stream.Collectors.joining;
+import static net.mirwaldt.logic.propositional.util.BitUtils.*;
 import static net.mirwaldt.logic.propositional.util.PropositionUtils.fromBit;
 import static net.mirwaldt.logic.propositional.util.PropositionUtils.toBit;
 
@@ -20,13 +21,13 @@ public interface Interpretation {
     }
 
     static Interpretation of(String var1, int val1, String var2, int val2) {
-        long bits = encode(0, val1);
+        long bits = encode(0,0, val1);
         bits = encode(bits, 1, val2);
         return new LongInterpretation(List.of(var1, var2), bits);
     }
 
     static Interpretation of(String var1, int val1, String var2, int val2, String var3, int val3) {
-        long bits = encode(0, val1);
+        long bits = encode(0, 0, val1);
         bits = encode(bits, 1, val2);
         bits = encode(bits, 2, val3);
         return new LongInterpretation(List.of(var1, var2, var3), bits);
@@ -34,7 +35,7 @@ public interface Interpretation {
 
     static Interpretation of(String var1, int val1, String var2, int val2,
                              String var3, int val3, String var4, int val4) {
-        long bits = encode(0, val1);
+        long bits = encode(0, 0, val1);
         bits = encode(bits, 1, val2);
         bits = encode(bits, 2, val3);
         bits = encode(bits, 3, val4);
@@ -69,9 +70,13 @@ public interface Interpretation {
         int bitIndexCounter = 1;
         for (Pair pair : pairs) {
             variableNames.add(pair.getVariableName());
-            bits = encode(bits, bitIndexCounter++, firstPair.getValue());
+            bits = encode(bits, bitIndexCounter++, pair.getValue());
         }
         return new LongInterpretation(variableNames, bits);
+    }
+    
+    static Pair pair(String variableName, int value) {
+        return new Pair(variableName, value);
     }
 
     /**
@@ -88,7 +93,16 @@ public interface Interpretation {
 
     List<String> getVariableNames();
 
-    String asBitsWhitespaceSeparated();
+    default String asBitsWhitespaceSeparated() {
+        return asBits(" ");
+    }
+
+    default String asBits(String separator) {
+        return getVariableNames().stream()
+                .map(this::getAsBit)
+                .map(String::valueOf)
+                .collect(joining(separator));
+    }
 
     class Pair {
         private final String variableName;

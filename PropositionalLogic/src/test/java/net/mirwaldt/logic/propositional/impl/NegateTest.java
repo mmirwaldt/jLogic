@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class NegateTest {
     private final Proposition A = Propositions.variable("A");
-    private final Proposition NEGATED_A = Propositions.negate(A);
+    private final Proposition NEGATED_A = A.negate();
     
     @Test
     void test_toExpression() {

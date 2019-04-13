@@ -13,7 +13,7 @@ public class ImplyTest {
     private final Proposition A = Propositions.variable("A");
     private final Proposition B = Propositions.variable("B");
     
-    private final Proposition A_IMPLY_B = imply(A, B);
+    private final Proposition A_IMPLY_B = A.imply(B);
 
     @Test
     void test_expression() {
