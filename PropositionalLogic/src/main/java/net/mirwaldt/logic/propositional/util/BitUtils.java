@@ -3,12 +3,8 @@ package net.mirwaldt.logic.propositional.util;
 import static net.mirwaldt.logic.propositional.util.PropositionUtils.fromBit;
 
 public class BitUtils {
-    public static long encode(long bitIndex, int bit) {
-        return encode(0, bitIndex, bit);
-    }
-    
     public static long encode(long bits, long bitIndex, int bit) {
-        if (63 < bitIndex) {
+        if (bitIndex < 0 || 62 < bitIndex) {
             throw new IllegalArgumentException(
                     "Bit index must lie between [0, 62] and cannot be " + bitIndex);
         } else {
@@ -21,7 +17,7 @@ public class BitUtils {
     }
 
     public static int decode(long bits, long bitIndex) {
-        if (63 < bitIndex) {
+        if (bitIndex < 0 || 62 < bitIndex) {
             throw new IllegalArgumentException(
                     "Bit index must lie between [0, 62] and cannot be " + bitIndex);
         } else {
