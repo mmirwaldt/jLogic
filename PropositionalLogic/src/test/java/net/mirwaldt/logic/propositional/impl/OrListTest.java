@@ -15,10 +15,12 @@ public class OrListTest {
     private final Proposition C = variable("C");
     private final Proposition D = variable("D");
 
-    private final Proposition NOT_A_OR_B_OR_NOT_C_OR_D = or(not(A), B, not(C), D);
+    private final Proposition NOT_A_OR_B_OR_NOT_C_OR_D = not(A).or(B).or(not(C)).or(D);
+    private final Proposition NOT_A_OR_B_OR_C_AND_D = not(A).or(B).or(C.and(D));
 
     @Test
     void test_expression() {
+        assertEquals("¬A ∨ B ∨ (C ∧ D)", NOT_A_OR_B_OR_C_AND_D.toExpression());
         assertEquals("¬A ∨ B ∨ ¬C ∨ D", NOT_A_OR_B_OR_NOT_C_OR_D.toExpression());
     }
 

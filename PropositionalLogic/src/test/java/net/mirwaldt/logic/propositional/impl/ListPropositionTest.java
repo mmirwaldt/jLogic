@@ -8,6 +8,7 @@ import java.util.Collections;
 import static java.util.Arrays.asList;
 import static net.mirwaldt.logic.propositional.api.Proposition.*;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ListPropositionTest {
     private final Proposition A = variable("A");
@@ -45,5 +46,12 @@ public class ListPropositionTest {
         assertNotEquals(A_AND_B, B);
         assertNotEquals(A_AND_B, TRUE);
         assertNotEquals(A_AND_B, FALSE);
+    }
+    
+    @Test
+    void testHashCode() {
+        assertNotEquals(A_AND_B.hashCode(), 0);
+        assertEquals(A_AND_B.hashCode(), A_AND_B.hashCode());
+        assertEquals(A_AND_B.hashCode(), A.and(B).hashCode());
     }
 }

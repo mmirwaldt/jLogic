@@ -7,19 +7,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OrProposition extends ListProposition {
-    public OrProposition(List<Proposition> propositions) {
+    private OrProposition(List<Proposition> propositions) {
         super(propositions, (left, right) -> left | right, "%s ∨ %s");
     }
 
-    @Override
-    public Proposition or(Proposition otherProposition) {
-        if(otherProposition instanceof MultiProposition) {
-            return Proposition.and(this, otherProposition);
-        } else {
-            List<Proposition> newPropositions = new ArrayList<>(propositions);
-            newPropositions.add(otherProposition);
-            return new AndProposition(newPropositions);
+    public static OrProposition create(List<Proposition> propositions) {
+        List<Proposition> newPropositions = new ArrayList<>();
+        for (Proposition proposition : propositions) {
+            if(proposition instanceof OrProposition) {
+                final OrProposition orProposition = (OrProposition) proposition;
+                newPropositions.addAll(orProposition.propositions);
+            } else {
+                newPropositions.add(proposition);
+            }
         }
+        return new OrProposition(newPropositions);
     }
-    
 }

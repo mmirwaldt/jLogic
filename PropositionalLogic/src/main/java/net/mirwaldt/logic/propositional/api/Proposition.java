@@ -90,14 +90,14 @@ public interface Proposition {
             Proposition firstProposition, Proposition secondProposition, Proposition... otherPropositions) {
         final List<Proposition> propositions =
                 collectPropositions(firstProposition, secondProposition, otherPropositions);
-        return new AndProposition(propositions);
+        return AndProposition.create(propositions);
     }
 
     static Proposition or(
             Proposition firstProposition, Proposition secondProposition, Proposition... otherPropositions) {
         final List<Proposition> propositions =
                 collectPropositions(firstProposition, secondProposition, otherPropositions);
-        return new OrProposition(propositions);
+        return OrProposition.create(propositions);
     }
 
     static Proposition xor(

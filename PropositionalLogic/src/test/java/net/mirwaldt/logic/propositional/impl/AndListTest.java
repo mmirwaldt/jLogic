@@ -17,9 +17,11 @@ public class AndListTest {
     private final Proposition D = variable("D");
 
     private final Proposition A_AND_B_AND_NOT_C_AND_D = A.and(B).and(not(C)).and(D);
+    private final Proposition A_AND_B_AND_NOT_C_OR_D = A.and(B).and(not(C).or(D));
     
     @Test
     void test_expression() {
+        assertEquals("A ∧ B ∧ (¬C ∨ D)", A_AND_B_AND_NOT_C_OR_D.toExpression());
         assertEquals("A ∧ B ∧ ¬C ∧ D", A_AND_B_AND_NOT_C_AND_D.toExpression());
     }
 
