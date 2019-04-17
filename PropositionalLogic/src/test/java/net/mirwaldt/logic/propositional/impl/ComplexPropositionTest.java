@@ -7,15 +7,15 @@ import org.junit.jupiter.api.Test;
 import java.util.NoSuchElementException;
 import java.util.Set;
 
-import static net.mirwaldt.logic.propositional.impl.Propositions.*;
+import static net.mirwaldt.logic.propositional.api.Proposition.*;
 import static net.mirwaldt.logic.propositional.util.PropositionUtils.fromBit;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ComplexPropositionTest {
-    private final Proposition A = Propositions.variable("A");
-    private final Proposition B = Propositions.variable("B");
-    private final Proposition C = Propositions.variable("C");
-    private final Proposition D = Propositions.variable("D");
+    private final Proposition A = variable("A");
+    private final Proposition B = variable("B");
+    private final Proposition C = variable("C");
+    private final Proposition D = variable("D");
     
     private final Proposition complex = (A.or(B)).nand(not(C).imply(D));
     

@@ -6,7 +6,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Set;
 
-import static net.mirwaldt.logic.propositional.impl.Propositions.*;
+import static net.mirwaldt.logic.propositional.api.Proposition.not;
+import static net.mirwaldt.logic.propositional.api.Proposition.variable;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class AndListTest {
@@ -15,7 +16,7 @@ public class AndListTest {
     private final Proposition C = variable("C");
     private final Proposition D = variable("D");
 
-    private final Proposition A_AND_B_AND_NOT_C_AND_D = and(A, B, not(C), D);
+    private final Proposition A_AND_B_AND_NOT_C_AND_D = A.and(B).and(not(C)).and(D);
     
     @Test
     void test_expression() {

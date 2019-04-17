@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
  * Can only be used for left associative operators.
  */
 public class ListProposition implements MultiProposition {
-    private final List<Proposition> propositions;
+    protected final List<Proposition> propositions;
     private final BiBooleanPredicate biBooleanPredicate;
     private final String expressionTemplate;
 

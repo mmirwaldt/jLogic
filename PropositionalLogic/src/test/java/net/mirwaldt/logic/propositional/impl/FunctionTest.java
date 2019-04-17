@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Set;
 
-import static net.mirwaldt.logic.propositional.impl.Propositions.function;
+import static net.mirwaldt.logic.propositional.api.Proposition.*;
 import static net.mirwaldt.logic.propositional.util.BitUtils.encode;
 import static net.mirwaldt.logic.propositional.util.PropositionUtils.fromBit;
 import static org.junit.jupiter.api.Assertions.*;

@@ -6,14 +6,14 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Set;
 
-import static net.mirwaldt.logic.propositional.impl.Propositions.*;
+import static net.mirwaldt.logic.propositional.api.Proposition.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class OrListTest {
-    private final Proposition A = Propositions.variable("A");
-    private final Proposition B = Propositions.variable("B");
-    private final Proposition C = Propositions.variable("C");
-    private final Proposition D = Propositions.variable("D");
+    private final Proposition A = variable("A");
+    private final Proposition B = variable("B");
+    private final Proposition C = variable("C");
+    private final Proposition D = variable("D");
 
     private final Proposition NOT_A_OR_B_OR_NOT_C_OR_D = or(not(A), B, not(C), D);
 

@@ -1,8 +1,8 @@
-package net.mirwaldt.logic.propositional.impl;
+package net.mirwaldt.logic.propositional.table.impl;
 
 import net.mirwaldt.logic.propositional.api.Interpretation;
 import net.mirwaldt.logic.propositional.api.Proposition;
-import net.mirwaldt.logic.propositional.api.TruthTable;
+import net.mirwaldt.logic.propositional.table.api.TruthTable;
 
 import java.util.List;
 import java.util.NoSuchElementException;

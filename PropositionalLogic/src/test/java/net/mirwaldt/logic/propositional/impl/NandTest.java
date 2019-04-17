@@ -4,12 +4,12 @@ import net.mirwaldt.logic.propositional.api.Interpretation;
 import net.mirwaldt.logic.propositional.api.Proposition;
 import org.junit.jupiter.api.Test;
 
-import static net.mirwaldt.logic.propositional.impl.Propositions.nand;
+import static net.mirwaldt.logic.propositional.api.Proposition.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class NandTest {
-    private final Proposition A = Propositions.variable("A");
-    private final Proposition B = Propositions.variable("B");
+    private final Proposition A = variable("A");
+    private final Proposition B = variable("B");
 
     private final Proposition A_NAND_B = A.nand(B);
 

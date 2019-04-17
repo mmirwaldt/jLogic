@@ -1,14 +1,15 @@
-package net.mirwaldt.logic.propositional.impl;
+package net.mirwaldt.logic.propositional.table.impl;
 
 import net.mirwaldt.logic.propositional.api.Interpretation;
 import net.mirwaldt.logic.propositional.api.Proposition;
-import net.mirwaldt.logic.propositional.api.TruthTable;
+import net.mirwaldt.logic.propositional.impl.LongInterpretation;
+import net.mirwaldt.logic.propositional.table.api.TruthTable;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static java.util.Comparator.naturalOrder;
-import static net.mirwaldt.logic.propositional.impl.Propositions.*;
+import static net.mirwaldt.logic.propositional.api.Proposition.*;
 import static net.mirwaldt.logic.propositional.util.BitUtils.encode;
 import static net.mirwaldt.logic.propositional.util.BitUtils.reverse;
 import static net.mirwaldt.logic.propositional.util.PropositionUtils.toBit;
@@ -46,12 +47,12 @@ public class TruthTableGenerator {
     }
 
     public static void main(String[] args) {
-        final Proposition A = Propositions.variable("A");
-        final Proposition B = Propositions.variable("B");
-        final Proposition C = Propositions.variable("C");
-        final Proposition D = Propositions.variable("D");
+        final Proposition A = Proposition.variable("A");
+        final Proposition B = Proposition.variable("B");
+        final Proposition C = Proposition.variable("C");
+        final Proposition D = Proposition.variable("D");
 
-        final Proposition complex = nand(or(A, B),imply(not(C), D));
+        final Proposition complex = (A.or(B)).nand(not(C).imply(D));
         TruthTable truthTable = evaluate(complex);
         System.out.println(
                 String.join(" ", truthTable.getInterpretations().get(0).getVariableNames()) 

@@ -1,12 +1,11 @@
 package net.mirwaldt.logic.propositional.api;
 
-import net.mirwaldt.logic.propositional.impl.Propositions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PropositionTest {
-    private final Proposition A = Propositions.variable("A");    
+    private final Proposition A = Proposition.variable("A");    
     
     @Test
     void test_evaluateAsBit() {

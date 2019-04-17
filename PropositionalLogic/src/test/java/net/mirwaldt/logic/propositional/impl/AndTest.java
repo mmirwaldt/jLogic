@@ -6,12 +6,11 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Set;
 
-import static net.mirwaldt.logic.propositional.impl.Propositions.and;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class AndTest {
-    private final Proposition A = Propositions.variable("A");
-    private final Proposition B = Propositions.variable("B");
+    private final Proposition A = Proposition.variable("A");
+    private final Proposition B = Proposition.variable("B");
     
     private final Proposition A_AND_B = A.and(B);
 

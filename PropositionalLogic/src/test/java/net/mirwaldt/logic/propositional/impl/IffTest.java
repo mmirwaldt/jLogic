@@ -6,12 +6,12 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Set;
 
-import static net.mirwaldt.logic.propositional.impl.Propositions.iff;
+import static net.mirwaldt.logic.propositional.api.Proposition.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class IffTest {
-    private final Proposition A = Propositions.variable("A");
-    private final Proposition B = Propositions.variable("B");
+    private final Proposition A = variable("A");
+    private final Proposition B = variable("B");
     
     private final Proposition A_IFF_B = A.iff(B);
 

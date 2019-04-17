@@ -7,7 +7,6 @@ import java.util.Collections;
 import java.util.Objects;
 import java.util.Set;
 
-import static net.mirwaldt.logic.propositional.impl.Propositions.value;
 import static net.mirwaldt.logic.propositional.util.PropositionUtils.toBit;
 
 public class ValueProposition implements Proposition {

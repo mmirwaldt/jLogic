@@ -8,7 +8,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-import static net.mirwaldt.logic.propositional.impl.Propositions.*;
+import static net.mirwaldt.logic.propositional.api.Proposition.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ValuePropositionTest {

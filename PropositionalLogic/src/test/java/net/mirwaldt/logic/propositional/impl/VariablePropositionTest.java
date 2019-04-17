@@ -8,8 +8,8 @@ import java.util.HashSet;
 import java.util.NoSuchElementException;
 import java.util.Set;
 
-import static net.mirwaldt.logic.propositional.impl.Propositions.*;
-import static net.mirwaldt.logic.propositional.impl.Propositions.TRUE;
+import static net.mirwaldt.logic.propositional.api.Proposition.TRUE;
+import static net.mirwaldt.logic.propositional.api.Proposition.variable;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class VariablePropositionTest {

@@ -1,14 +1,22 @@
 package net.mirwaldt.logic.propositional.impl;
 
+import net.mirwaldt.logic.propositional.api.Proposition;
 import org.junit.jupiter.api.Test;
 
 import java.util.Collections;
 
 import static java.util.Arrays.asList;
-import static net.mirwaldt.logic.propositional.impl.Propositions.variable;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static net.mirwaldt.logic.propositional.api.Proposition.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ListPropositionTest {
+    private final Proposition A = variable("A");
+    private final Proposition B = variable("B");
+    private final Proposition C = variable("C");
+
+    private final Proposition A_AND_B = A.and(B);
+    private final Proposition A_OR_B = A.or(B);
+    
     @Test
     void testConstructor() {
         assertThrows(IllegalArgumentException.class,
@@ -25,5 +33,17 @@ public class ListPropositionTest {
 
         new ListProposition(asList(variable("A"), variable("B")),
                 (left, right) -> left, "%s left %s");
+    }
+    
+    @Test
+    void testEquals() {
+        assertNotEquals(A_AND_B, null);
+        assertEquals(A_AND_B, A_AND_B);
+        assertEquals(A_AND_B, A.and(B));
+        assertNotEquals(A_AND_B, A.and(B).and(C));
+        assertNotEquals(A_AND_B, A);
+        assertNotEquals(A_AND_B, B);
+        assertNotEquals(A_AND_B, TRUE);
+        assertNotEquals(A_AND_B, FALSE);
     }
 }
