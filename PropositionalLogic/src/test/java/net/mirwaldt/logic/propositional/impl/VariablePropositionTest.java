@@ -4,14 +4,16 @@ import net.mirwaldt.logic.propositional.api.Interpretation;
 import net.mirwaldt.logic.propositional.api.Proposition;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashSet;
 import java.util.NoSuchElementException;
 import java.util.Set;
 
-import static net.mirwaldt.logic.propositional.impl.Propositions.variable;
+import static net.mirwaldt.logic.propositional.impl.Propositions.*;
+import static net.mirwaldt.logic.propositional.impl.Propositions.TRUE;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class VariablePropositionTest {
-    private final Proposition A = variable("A");
+    private final VariableProposition A = variable("A");
 
     @Test
     void test_nullForbidden() {
@@ -41,5 +43,29 @@ public class VariablePropositionTest {
     @Test
     void test_findVariableNames() {
         assertEquals(Set.of("A"), A.findVariableNames());
+    }
+    
+    @Test
+    void test_getVariableName() {
+        assertEquals("A", A.getVariableName());
+    }
+
+    @Test
+    void test_equals() {
+        Proposition A = variable("A");
+        assertFalse(A.equals(null));
+        assertTrue(A.equals(A));
+        assertTrue(A.equals(variable("A")));
+        assertFalse(A.equals(variable("B")));
+    }
+
+    @Test
+    void test_hashCodeWithEquals() {
+        Set<Proposition> propositions = new HashSet<>();
+        propositions.add(TRUE);
+        propositions.add(variable("A"));
+
+        assertFalse(propositions.contains(variable("B")));
+        assertTrue(propositions.contains(variable("A")));
     }
 }

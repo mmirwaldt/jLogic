@@ -108,7 +108,7 @@ public interface Interpretation {
         private final String variableName;
         private final int value;
 
-        public Pair(String variableName, int value) {
+        Pair(String variableName, int value) {
             this.variableName = variableName;
             this.value = value;
         }

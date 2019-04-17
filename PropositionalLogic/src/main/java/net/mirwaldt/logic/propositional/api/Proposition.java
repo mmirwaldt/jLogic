@@ -21,14 +21,14 @@ public interface Proposition {
      */
     String toExpression();
     
+    Set<String> findVariableNames();
+
     default int evaluateAsBit(Interpretation interpretation) {
         return toBit(evaluate(interpretation));
     }
     
-    Set<String> findVariableNames();
-    
     default Proposition negate() {
-        return Propositions.negate(this);
+        return Propositions.not(this);
     }
     
     default Proposition and(Proposition otherProposition) {

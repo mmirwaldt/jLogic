@@ -15,7 +15,7 @@ public class PropositionUtilsTest {
     public void test_toFinalExpression() {
         assertEquals("1", PropositionUtils.toFinalExpression(TRUE));
         assertEquals("A", PropositionUtils.toFinalExpression(variable("A")));
-        assertEquals("¬A", PropositionUtils.toFinalExpression(negate(variable("A"))));
+        assertEquals("¬A", PropositionUtils.toFinalExpression(not(variable("A"))));
         assertEquals("(A ∧ B)", PropositionUtils.toFinalExpression(and(variable("A"), variable("B"))));
         assertEquals("f(A)",
                 PropositionUtils.toFinalExpression(

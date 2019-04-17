@@ -1,4 +1,4 @@
-package net.mirwaldt.logic.propositional.util.api;
+package net.mirwaldt.logic.propositional.api;
 
 import java.io.Serializable;
 

@@ -3,8 +3,8 @@ package net.mirwaldt.logic.propositional.impl;
 import net.mirwaldt.logic.propositional.api.Interpretation;
 import net.mirwaldt.logic.propositional.api.MultiProposition;
 import net.mirwaldt.logic.propositional.api.Proposition;
-import net.mirwaldt.logic.propositional.util.LambdaObjects;
-import net.mirwaldt.logic.propositional.util.api.BiBooleanPredicate;
+import net.mirwaldt.logic.propositional.util.PropositionUtils;
+import net.mirwaldt.logic.propositional.api.BiBooleanPredicate;
 
 import java.util.List;
 import java.util.Objects;
@@ -22,8 +22,23 @@ public class ListProposition implements MultiProposition {
     public ListProposition(List<Proposition> propositions, BiBooleanPredicate biBooleanPredicate,
                            String expressionTemplate) {
         this.propositions = propositions;
+        if(propositions.size() < 2) {
+            throw new IllegalArgumentException("propositions has fewer than 2 elements. " +
+                    "It has only " + propositions.size() + " propositions.");
+        }
+        
         this.biBooleanPredicate = biBooleanPredicate;
         this.expressionTemplate = expressionTemplate;
+        
+        final int placeholderCount = frequencyOfSubstring(expressionTemplate);
+        if(2 != placeholderCount) {
+            throw new IllegalArgumentException("expressionTemplate '"
+                    + expressionTemplate + "' has " + placeholderCount + " %s-placeholder instead of two!");
+        }
+    }
+
+    private int frequencyOfSubstring(String expressionTemplate) {
+        return expressionTemplate.split("%s", -1).length - 1;
     }
 
     @Override
@@ -49,7 +64,7 @@ public class ListProposition implements MultiProposition {
         }
         return String.format(finalExpressionTemplate,
                 propositions.stream()
-                        .map(Proposition::toExpression)
+                        .map(PropositionUtils::toFinalExpression)
                         .toArray());
     }
 
@@ -65,13 +80,11 @@ public class ListProposition implements MultiProposition {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ListProposition that = (ListProposition) o;
-        return Objects.equals(propositions, that.propositions) &&
-                LambdaObjects.equals(biBooleanPredicate, that.biBooleanPredicate) &&
-                Objects.equals(expressionTemplate, that.expressionTemplate);
+        return Objects.equals(propositions, that.propositions);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(propositions, LambdaObjects.hash(biBooleanPredicate), expressionTemplate);
+        return Objects.hash(propositions, getClass());
     }
 }

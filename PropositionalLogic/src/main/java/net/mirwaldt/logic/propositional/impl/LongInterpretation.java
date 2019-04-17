@@ -1,7 +1,5 @@
 package net.mirwaldt.logic.propositional.impl;
 
-import net.mirwaldt.logic.propositional.api.Interpretation;
-
 import java.util.Collections;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -9,13 +7,17 @@ import java.util.Objects;
 
 import static net.mirwaldt.logic.propositional.util.BitUtils.decode;
 import static net.mirwaldt.logic.propositional.util.PropositionUtils.fromBit;
-import static net.mirwaldt.logic.propositional.util.PropositionUtils.toBit;
 
-public class LongInterpretation implements Interpretation {
+public class LongInterpretation extends AbstractInterpretation {
     private final List<String> variableNames;
     private final long bits;
 
     public LongInterpretation(List<String> variableNames, long bits) {
+        super((o) -> {
+            LongInterpretation that = (LongInterpretation) o;
+            return bits == that.bits &&
+                    Objects.equals(variableNames, that.variableNames);
+        });
         checkParameters(variableNames);
         this.variableNames = Collections.unmodifiableList(variableNames);
         this.bits = bits;
@@ -44,38 +46,5 @@ public class LongInterpretation implements Interpretation {
     @Override
     public List<String> getVariableNames() {
         return variableNames;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null) return false;
-        if (getClass().equals(o.getClass())) {
-            LongInterpretation that = (LongInterpretation) o;
-            return bits == that.bits &&
-                    Objects.equals(variableNames, that.variableNames);
-        }
-        if (o instanceof Interpretation) {
-            Interpretation other = (Interpretation) o;
-            if (other.getVariableNames().equals(getVariableNames())) {
-                for (String variableName : getVariableNames()) {
-                    if (other.get(variableName) != get(variableName)) {
-                        return false;
-                    }
-                }
-                return true;
-            } else {
-                return false;
-            }
-        }
-        return false;
-    }
-
-    @Override
-    public int hashCode() {
-        return getVariableNames().stream()
-                .sorted()
-                .mapToInt((varName) -> toBit(get(varName)))
-                .reduce(Objects.hash(variableNames), (bit, hash) -> 31 * hash + (bit == 1 ? 1231 : 1237));
     }
 }

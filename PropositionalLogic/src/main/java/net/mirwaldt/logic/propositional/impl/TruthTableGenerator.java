@@ -51,7 +51,7 @@ public class TruthTableGenerator {
         final Proposition C = Propositions.variable("C");
         final Proposition D = Propositions.variable("D");
 
-        final Proposition complex = nand(or(A, B),imply(negate(C), D));
+        final Proposition complex = nand(or(A, B),imply(not(C), D));
         TruthTable truthTable = evaluate(complex);
         System.out.println(
                 String.join(" ", truthTable.getInterpretations().get(0).getVariableNames()) 
