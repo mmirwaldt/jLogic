@@ -1,12 +1,12 @@
 package net.mirwaldt.logic.propositional.util;
 
-import net.mirwaldt.logic.propositional.api.Interpretation;
+import net.mirwaldt.logic.propositional.interpretation.api.Interpretation;
 import org.junit.jupiter.api.Test;
 
 import static java.util.Arrays.asList;
 import static java.util.Collections.emptyList;
 import static java.util.Collections.singletonList;
-import static net.mirwaldt.logic.propositional.api.Proposition.*;
+import static net.mirwaldt.logic.propositional.proposition.api.Proposition.*;
 import static net.mirwaldt.logic.propositional.util.PropositionUtils.*;
 import static org.junit.jupiter.api.Assertions.*;
 

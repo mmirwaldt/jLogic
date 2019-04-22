@@ -1,15 +1,15 @@
 package net.mirwaldt.logic.propositional.table.impl;
 
-import net.mirwaldt.logic.propositional.api.Interpretation;
-import net.mirwaldt.logic.propositional.api.Proposition;
-import net.mirwaldt.logic.propositional.impl.LongInterpretation;
+import net.mirwaldt.logic.propositional.interpretation.api.Interpretation;
+import net.mirwaldt.logic.propositional.proposition.api.Proposition;
+import net.mirwaldt.logic.propositional.interpretation.impl.LongInterpretation;
 import net.mirwaldt.logic.propositional.table.api.TruthTable;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static java.util.Comparator.naturalOrder;
-import static net.mirwaldt.logic.propositional.api.Proposition.*;
+import static net.mirwaldt.logic.propositional.proposition.api.Proposition.*;
 import static net.mirwaldt.logic.propositional.util.BitUtils.encode;
 import static net.mirwaldt.logic.propositional.util.BitUtils.reverseBits;
 import static net.mirwaldt.logic.propositional.util.PropositionUtils.toBit;

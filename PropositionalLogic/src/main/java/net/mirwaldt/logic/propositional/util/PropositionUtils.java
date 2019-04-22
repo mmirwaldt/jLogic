@@ -1,7 +1,7 @@
 package net.mirwaldt.logic.propositional.util;
 
-import net.mirwaldt.logic.propositional.api.MultiProposition;
-import net.mirwaldt.logic.propositional.api.Proposition;
+import net.mirwaldt.logic.propositional.proposition.api.MultiProposition;
+import net.mirwaldt.logic.propositional.proposition.api.Proposition;
 
 import java.util.List;
 import java.util.stream.Collectors;

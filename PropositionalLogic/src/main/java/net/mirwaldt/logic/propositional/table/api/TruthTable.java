@@ -1,7 +1,7 @@
 package net.mirwaldt.logic.propositional.table.api;
 
-import net.mirwaldt.logic.propositional.api.Interpretation;
-import net.mirwaldt.logic.propositional.api.Proposition;
+import net.mirwaldt.logic.propositional.interpretation.api.Interpretation;
+import net.mirwaldt.logic.propositional.proposition.api.Proposition;
 
 import java.util.List;
 
