@@ -11,7 +11,7 @@ import java.util.List;
 import static java.util.Comparator.naturalOrder;
 import static net.mirwaldt.logic.propositional.api.Proposition.*;
 import static net.mirwaldt.logic.propositional.util.BitUtils.encode;
-import static net.mirwaldt.logic.propositional.util.BitUtils.reverse;
+import static net.mirwaldt.logic.propositional.util.BitUtils.reverseBits;
 import static net.mirwaldt.logic.propositional.util.PropositionUtils.toBit;
 
 public class TruthTableGenerator {
@@ -25,7 +25,7 @@ public class TruthTableGenerator {
         final List<Interpretation> interpretations = new ArrayList<>();
         long resultsAsBits = 0;
         for (long rowIndex = 0; rowIndex < numberOfRows; rowIndex++) {
-            final Interpretation interpretation = new LongInterpretation(namesSorted, reverse(rowIndex, numberOfBits));
+            final Interpretation interpretation = new LongInterpretation(namesSorted, reverseBits(rowIndex, numberOfBits));
             final boolean result = proposition.evaluate(interpretation);
             if(result) {
                 resultsAsBits = encode(resultsAsBits, rowIndex, 1);

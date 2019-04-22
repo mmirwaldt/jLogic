@@ -45,13 +45,13 @@ public class BitUtilsTest {
 
     @Test
     void test_reverse_4bits() {
-        assertEquals(0x00_00_00_00_00_00_00_00L, BitUtils.reverse(0x00_00_00_00_00_00_00_00L, 4));
-        assertEquals(0x00_00_00_00_00_00_00_08L, BitUtils.reverse(0x00_00_00_00_00_00_00_01L, 4));
-        assertEquals(0x00_00_00_00_00_00_00_04L, BitUtils.reverse(0x00_00_00_00_00_00_00_02L, 4));
-        assertEquals(0x00_00_00_00_00_00_00_0CL, BitUtils.reverse(0x00_00_00_00_00_00_00_03L, 4));
+        assertEquals(0x00_00_00_00_00_00_00_00L, BitUtils.reverseBits(0x00_00_00_00_00_00_00_00L, 4));
+        assertEquals(0x00_00_00_00_00_00_00_08L, BitUtils.reverseBits(0x00_00_00_00_00_00_00_01L, 4));
+        assertEquals(0x00_00_00_00_00_00_00_04L, BitUtils.reverseBits(0x00_00_00_00_00_00_00_02L, 4));
+        assertEquals(0x00_00_00_00_00_00_00_0CL, BitUtils.reverseBits(0x00_00_00_00_00_00_00_03L, 4));
 
-        assertEquals(0x00_00_00_00_00_00_00_01L, BitUtils.reverse(0x00_00_00_00_00_00_00_08L, 4));
-        assertEquals(0x00_00_00_00_00_00_00_02L, BitUtils.reverse(0x00_00_00_00_00_00_00_04L, 4));
-        assertEquals(0x00_00_00_00_00_00_00_03L, BitUtils.reverse(0x00_00_00_00_00_00_00_0CL, 4));
+        assertEquals(0x00_00_00_00_00_00_00_01L, BitUtils.reverseBits(0x00_00_00_00_00_00_00_08L, 4));
+        assertEquals(0x00_00_00_00_00_00_00_02L, BitUtils.reverseBits(0x00_00_00_00_00_00_00_04L, 4));
+        assertEquals(0x00_00_00_00_00_00_00_03L, BitUtils.reverseBits(0x00_00_00_00_00_00_00_0CL, 4));
     }
 }

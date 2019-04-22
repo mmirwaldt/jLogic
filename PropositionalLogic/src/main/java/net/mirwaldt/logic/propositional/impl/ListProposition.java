@@ -23,7 +23,7 @@ public class ListProposition implements MultiProposition {
                            String expressionTemplate) {
         this.propositions = propositions;
         if(propositions.size() < 2) {
-            throw new IllegalArgumentException("propositions has fewer than 2 elements. " +
+            throw new IllegalArgumentException("Parameter propositions has fewer than 2 elements. " +
                     "It has only " + propositions.size() + " propositions.");
         }
         

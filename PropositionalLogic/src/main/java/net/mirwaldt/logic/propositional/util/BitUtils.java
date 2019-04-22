@@ -26,7 +26,7 @@ public class BitUtils {
         }
     }
     
-    public static long reverse(long bits, int maxNumberOfBits) {
+    public static long reverseBits(long bits, int maxNumberOfBits) {
         long result = bits;
         for (int bitIndex = 0; bitIndex < maxNumberOfBits / 2; bitIndex++) {
             int mirrorBitIndex = maxNumberOfBits - bitIndex - 1;

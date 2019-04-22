@@ -13,16 +13,18 @@ public class LongInterpretation extends AbstractInterpretation {
     private final long bits;
 
     public LongInterpretation(List<String> variableNames, long bits) {
-        super((o) -> {
-            LongInterpretation that = (LongInterpretation) o;
-            return bits == that.bits &&
-                    Objects.equals(variableNames, that.variableNames);
-        });
         checkParameters(variableNames);
         this.variableNames = Collections.unmodifiableList(variableNames);
         this.bits = bits;
     }
 
+    @Override
+    protected boolean equalsSameClass(Object o) {
+        LongInterpretation that = (LongInterpretation) o;
+        return bits == that.bits &&
+                Objects.equals(variableNames, that.variableNames);
+    }
+    
     private void checkParameters(List<String> variableNames) {
         if (variableNames.isEmpty()) {
             throw new IllegalArgumentException(
@@ -47,4 +49,5 @@ public class LongInterpretation extends AbstractInterpretation {
     public List<String> getVariableNames() {
         return variableNames;
     }
+
 }

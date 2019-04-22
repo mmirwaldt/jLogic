@@ -13,7 +13,7 @@ public class AndProposition extends ListProposition {
     public static AndProposition create(List<Proposition> propositions) {
         List<Proposition> newPropositions = new ArrayList<>();
         for (Proposition proposition : propositions) {
-            if(proposition instanceof AndProposition) {
+            if (proposition instanceof AndProposition) {
                 final AndProposition andProposition = (AndProposition) proposition;
                 newPropositions.addAll(andProposition.propositions);
             } else {
