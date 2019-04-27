@@ -32,24 +32,10 @@ public class PropositionUtilsTest {
     }
 
     @Test
-    void test_toBits() {
-        assertEquals(emptyList(), toBits(asList()));
-        assertEquals(singletonList(0), toBits(singletonList(false)));
-        assertEquals(asList(0, 1), toBits(asList(false, true)));
-    }
-
-    @Test
     void test_fromBit() {
         assertFalse(fromBit(0));
         assertTrue(fromBit(1));
         //noinspection ResultOfMethodCallIgnored
         assertThrows(IllegalArgumentException.class, () -> fromBit(-1));
-    }
-
-    @Test
-    void test_fromBits() {
-        assertEquals(emptyList(), fromBits());
-        assertEquals(singletonList(true), fromBits(1));
-        assertEquals(asList(false, true), fromBits(0, 1));
     }
 }
