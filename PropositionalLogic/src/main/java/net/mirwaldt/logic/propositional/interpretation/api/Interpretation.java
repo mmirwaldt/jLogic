@@ -79,6 +79,10 @@ public interface Interpretation {
         return new Pair(variableName, value);
     }
 
+    static Pair pair(String variableName, boolean value) {
+        return pair(variableName, toBit(value));
+    }
+
     /**
      * get the boolean value (i.e. the interpretation) for a variable
      *
