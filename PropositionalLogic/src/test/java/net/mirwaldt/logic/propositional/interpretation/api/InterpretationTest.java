@@ -23,6 +23,6 @@ public class InterpretationTest {
         assertEquals(1, interpretation.getAsBit("B"));
         assertEquals("0 1", interpretation.asBitsWhitespaceSeparated()); 
         assertThrows(IllegalArgumentException.class, ()->Interpretation.ofPairs(
-                pair("A", 0), new Interpretation.Pair[63]));
+                pair("A", 0), new Interpretation.Pair[64]));
     }
 }
