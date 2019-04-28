@@ -1,13 +1,18 @@
 package net.mirwaldt.logic.propositional.interpretation.api;
 
 import net.mirwaldt.logic.propositional.interpretation.impl.LongInterpretation;
+import net.mirwaldt.logic.propositional.proposition.api.Proposition;
+import net.mirwaldt.logic.propositional.proposition.impl.VariableProposition;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.joining;
-import static net.mirwaldt.logic.propositional.util.BitUtils.*;
+import static net.mirwaldt.logic.propositional.proposition.api.Proposition.not;
+import static net.mirwaldt.logic.propositional.util.BitUtils.encode;
 import static net.mirwaldt.logic.propositional.util.PropositionUtils.fromBit;
 import static net.mirwaldt.logic.propositional.util.PropositionUtils.toBit;
 
@@ -21,7 +26,7 @@ public interface Interpretation {
     }
 
     static Interpretation of(String var1, int val1, String var2, int val2) {
-        long bits = encode(0,0, val1);
+        long bits = encode(0, 0, val1);
         bits = encode(bits, 1, val2);
         return new LongInterpretation(List.of(var1, var2), bits);
     }
@@ -74,7 +79,7 @@ public interface Interpretation {
         }
         return new LongInterpretation(variableNames, bits);
     }
-    
+
     static Pair pair(String variableName, int value) {
         return new Pair(variableName, value);
     }
@@ -106,6 +111,18 @@ public interface Interpretation {
                 .map(this::getAsBit)
                 .map(String::valueOf)
                 .collect(joining(separator));
+    }
+
+    default List<Proposition> asPropositions() {
+        return getVariableNames().stream()
+                .map(VariableProposition::new)
+                .map(variableProposition -> 
+                        (get(variableProposition.getVariableName()) ? variableProposition : not(variableProposition)))
+                .collect(Collectors.toList());
+    }
+
+    default Proposition join(Function<List<Proposition>, Proposition> propositionFunction) {
+        return propositionFunction.apply(asPropositions());
     }
 
     class Pair {

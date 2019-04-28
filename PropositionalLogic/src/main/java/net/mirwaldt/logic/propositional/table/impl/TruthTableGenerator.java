@@ -19,7 +19,7 @@ public class TruthTableGenerator {
         final Proposition D = Proposition.variable("D");
 
         final Proposition complex = (A.or(B)).nand(not(C).imply(D));
-
+        
         final List<String> variableNames = new ArrayList<>(complex.findVariableNames());
         variableNames.sort(Comparator.naturalOrder());
         final LongInterpretationsIterable longInterpretationsIterable = new LongInterpretationsIterable(variableNames);
@@ -29,5 +29,8 @@ public class TruthTableGenerator {
         for (Interpretation interpretation : longInterpretationsIterable) {
             System.out.println(interpretation.asBitsWhitespaceSeparated() + " | " + toBit(complex.evaluate(interpretation)));
         }
+
+        System.out.println("DNF: " + complex.toDNF().toExpression());
+        System.out.println("KNF: " + complex.toKNF().toExpression());
     }
 }
