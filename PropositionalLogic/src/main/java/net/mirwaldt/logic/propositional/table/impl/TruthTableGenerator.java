@@ -1,6 +1,7 @@
 package net.mirwaldt.logic.propositional.table.impl;
 
 import net.mirwaldt.logic.propositional.interpretation.api.Interpretation;
+import net.mirwaldt.logic.propositional.interpretation.impl.LongInterpretationsIterable;
 import net.mirwaldt.logic.propositional.proposition.api.Proposition;
 
 import java.util.ArrayList;

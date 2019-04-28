@@ -1,7 +1,6 @@
-package net.mirwaldt.logic.propositional.table.impl;
+package net.mirwaldt.logic.propositional.interpretation.impl;
 
 import net.mirwaldt.logic.propositional.interpretation.api.Interpretation;
-import net.mirwaldt.logic.propositional.interpretation.impl.LongInterpretation;
 
 import java.util.Iterator;
 import java.util.List;
