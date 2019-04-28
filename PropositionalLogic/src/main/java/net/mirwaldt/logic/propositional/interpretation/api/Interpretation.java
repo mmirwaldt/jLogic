@@ -60,7 +60,7 @@ public interface Interpretation {
     }
 
     static Interpretation ofPairs(Pair firstPair, Pair... pairs) {
-        if (62 < pairs.length) {
+        if (63 < pairs.length) {
             throw new IllegalArgumentException(
                     "More than 63 variables are not supported yet.");
         }

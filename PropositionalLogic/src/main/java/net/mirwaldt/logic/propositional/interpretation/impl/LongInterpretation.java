@@ -49,5 +49,4 @@ public class LongInterpretation extends AbstractInterpretation {
     public List<String> getVariableNames() {
         return variableNames;
     }
-
 }
