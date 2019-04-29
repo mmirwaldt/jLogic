@@ -27,7 +27,6 @@ public class TruthTableGenerator {
         final Proposition dnf = complex.toDNF();
         final Proposition knf = complex.toKNF();
 
-        System.out.println(complex.toExpression().length());
         final String rowPattern = "%s | %" + complex.toExpression().length() + "s | %3s | %3s";
         System.out.println(
                 String.format(rowPattern, String.join(" ", variableNames),
