@@ -1,8 +1,8 @@
 package net.mirwaldt.logic.propositional.proposition.api;
 
 import net.mirwaldt.logic.propositional.interpretation.api.Interpretation;
-import net.mirwaldt.logic.propositional.normalizer.impl.LongConjunctivePropositionNormalizer;
-import net.mirwaldt.logic.propositional.normalizer.impl.LongDisjunctivePropositionNormalizer;
+import net.mirwaldt.logic.propositional.normalizer.impl.ConjunctivePropositionNormalizer;
+import net.mirwaldt.logic.propositional.normalizer.impl.DisjunctivePropositionNormalizer;
 import net.mirwaldt.logic.propositional.proposition.impl.*;
 
 import java.util.ArrayList;
@@ -150,10 +150,10 @@ public interface Proposition {
     }
     
     default Proposition toDNF(){
-        return new LongDisjunctivePropositionNormalizer().normalize(this); 
+        return new DisjunctivePropositionNormalizer().normalize(this); 
     }
     
     default Proposition toKNF(){
-        return new LongConjunctivePropositionNormalizer().normalize(this);
+        return new ConjunctivePropositionNormalizer().normalize(this);
     }
 }
