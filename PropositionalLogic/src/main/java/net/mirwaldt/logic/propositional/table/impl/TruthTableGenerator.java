@@ -25,12 +25,12 @@ public class TruthTableGenerator {
         final LongInterpretationsIterable longInterpretationsIterable = new LongInterpretationsIterable(variableNames);
 
         final Proposition dnf = complex.toDNF();
-        final Proposition knf = complex.toKNF();
+        final Proposition cnf = complex.toCNF();
 
         final String rowPattern = "%s | %" + complex.toExpression().length() + "s | %3s | %3s";
         System.out.println(
                 String.format(rowPattern, String.join(" ", variableNames),
-                        complex.toExpression(), "DNF", "KNF")
+                        complex.toExpression(), "DNF", "CNF")
         );
         for (Interpretation interpretation : longInterpretationsIterable) {
             System.out.println(
@@ -38,12 +38,12 @@ public class TruthTableGenerator {
                             interpretation.asBitsWhitespaceSeparated(), 
                             toBit(complex.evaluate(interpretation)), 
                             toBit(dnf.evaluate(interpretation)),
-                            toBit(knf.evaluate(interpretation))
+                            toBit(cnf.evaluate(interpretation))
                     )
             );
         }
 
         System.out.println("DNF: " + complex.toDNF().toExpression());
-        System.out.println("KNF: " + complex.toKNF().toExpression());
+        System.out.println("CNF: " + complex.toCNF().toExpression());
     }
 }

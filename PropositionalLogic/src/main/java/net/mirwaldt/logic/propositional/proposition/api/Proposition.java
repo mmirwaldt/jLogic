@@ -153,7 +153,7 @@ public interface Proposition {
         return new DisjunctivePropositionNormalizer().normalize(this); 
     }
     
-    default Proposition toKNF(){
+    default Proposition toCNF(){
         return new ConjunctivePropositionNormalizer().normalize(this);
     }
 }
