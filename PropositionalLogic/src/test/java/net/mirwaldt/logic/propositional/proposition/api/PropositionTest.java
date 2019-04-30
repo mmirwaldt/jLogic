@@ -1,7 +1,6 @@
 package net.mirwaldt.logic.propositional.proposition.api;
 
 import net.mirwaldt.logic.propositional.interpretation.api.Interpretation;
-import net.mirwaldt.logic.propositional.proposition.api.Proposition;
 import org.junit.jupiter.api.Test;
 
 import static net.mirwaldt.logic.propositional.proposition.api.Proposition.*;
