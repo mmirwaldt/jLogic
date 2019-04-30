@@ -37,6 +37,10 @@ public class ListProposition implements MultiProposition {
         }
     }
 
+    public List<Proposition> getPropositions() {
+        return propositions;
+    }
+
     private int frequencyOfSubstring(String expressionTemplate) {
         return expressionTemplate.split("%s", -1).length - 1;
     }

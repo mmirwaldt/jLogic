@@ -31,6 +31,10 @@ public class NotProposition implements Proposition {
         return proposition.findVariableNames();
     }
 
+    public Proposition getProposition() {
+        return proposition;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
