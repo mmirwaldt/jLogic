@@ -80,6 +80,12 @@ public class FunctionTest {
     }
 
     @Test
+    void testGetInterpretations() {
+        assertEquals(interpretations, ((FunctionProposition)prime).getInterpretations());
+        assertEquals(incompleteInterpretations, ((FunctionProposition)incompletePrime).getInterpretations());
+    }
+    
+    @Test
     void test_findVariableNames() {
         assertEquals(Set.of("B0", "B1", "B2"), prime.findVariableNames());
         assertEquals(Set.of("B0", "B1", "B2"), incompletePrime.findVariableNames());

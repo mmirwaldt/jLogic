@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Set;
 
+import static java.util.Arrays.asList;
 import static net.mirwaldt.logic.propositional.proposition.api.Proposition.not;
 import static net.mirwaldt.logic.propositional.proposition.api.Proposition.variable;
 import static org.junit.jupiter.api.Assertions.*;
@@ -60,9 +61,14 @@ public class AndListTest {
         assertFalse(A_AND_B_AND_NOT_C_AND_D.evaluate(
                 PropositionInterpretation.of("A", 1, "B", 1, "C", 1, "D", 1)));
     }
-    
+
     @Test
     void test_findVariableNames() {
         assertEquals(Set.of("A", "B", "C", "D"), A_AND_B_AND_NOT_C_AND_D.findVariableNames());
+    }
+    
+    @Test
+    void testGetPropositions() {
+        assertEquals(asList(A, B, not(C), D), ((ListProposition) A_AND_B_AND_NOT_C_AND_D).getPropositions());
     }
 }

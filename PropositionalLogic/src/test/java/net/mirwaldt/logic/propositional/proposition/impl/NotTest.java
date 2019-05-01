@@ -34,6 +34,10 @@ public class NotTest {
         assertEquals(Set.of("A"), NOT_A.findVariableNames());
     }
 
+    @Test
+    void testGetProposition() {
+        assertEquals(A, ((NotProposition)NOT_A).getProposition());
+    }
 
     @Test
     void testEquals() {

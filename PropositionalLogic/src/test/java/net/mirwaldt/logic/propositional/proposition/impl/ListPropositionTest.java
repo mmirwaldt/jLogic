@@ -17,7 +17,6 @@ public class ListPropositionTest {
     private final Proposition C = variable("C");
 
     private final Proposition A_AND_B = A.and(B);
-    private final Proposition A_OR_B = A.or(B);
     
     @Test
     void testConstructor() {

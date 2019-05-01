@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Set;
 
+import static java.util.Arrays.asList;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class AndTest {
@@ -30,5 +31,10 @@ public class AndTest {
     @Test
     void test_findVariableNames() {
         assertEquals(Set.of("A", "B"), A_AND_B.findVariableNames());
+    }
+    
+    @Test
+    void testGetPropositions() {
+        assertEquals(asList(A, B), ((ListProposition) A_AND_B).getPropositions()); 
     }
 }

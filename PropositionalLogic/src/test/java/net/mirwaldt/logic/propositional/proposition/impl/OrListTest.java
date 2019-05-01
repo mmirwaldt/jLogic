@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Set;
 
+import static java.util.Arrays.asList;
 import static net.mirwaldt.logic.propositional.proposition.api.Proposition.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -63,5 +64,10 @@ public class OrListTest {
     @Test
     void test_findVariableNames() {
         assertEquals(Set.of("A", "B", "C", "D"), NOT_A_OR_B_OR_NOT_C_OR_D.findVariableNames());
+    }
+    
+    @Test
+    void testGetPropositions() {
+        assertEquals(asList(not(A), B, not(C), D), ((ListProposition) NOT_A_OR_B_OR_NOT_C_OR_D).getPropositions());
     }
 }

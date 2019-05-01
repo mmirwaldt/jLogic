@@ -18,7 +18,7 @@ public class PropositionInterpretationTest {
     @Test
     void test_pairFactory() {
         PropositionInterpretation interpretation = PropositionInterpretation.ofPairs(
-                pair("A", 0), pair("B", 1));
+                pair("A", 0), pair("B", true));
         assertEquals(0,interpretation.getAsBit("A"));
         assertEquals(1, interpretation.getAsBit("B"));
         assertEquals("0 1", interpretation.asBitsWhitespaceSeparated()); 

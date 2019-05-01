@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Set;
 
+import static java.util.Arrays.asList;
 import static net.mirwaldt.logic.propositional.proposition.api.Proposition.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -31,5 +32,10 @@ public class OrTest {
     @Test
     void test_findVariableNames() {
         assertEquals(Set.of("A", "B"), A_OR_B.findVariableNames());
+    }
+    
+    @Test
+    void testGetPropositions() {
+        assertEquals(asList(A, B), ((ListProposition) A_OR_B).getPropositions());
     }
 }
