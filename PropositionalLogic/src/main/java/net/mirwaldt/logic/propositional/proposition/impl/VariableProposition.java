@@ -2,10 +2,9 @@ package net.mirwaldt.logic.propositional.proposition.impl;
 
 import net.mirwaldt.logic.propositional.interpretation.api.Interpretation;
 import net.mirwaldt.logic.propositional.proposition.api.Proposition;
+import net.mirwaldt.logic.propositional.util.SingletonSortedSet;
 
-import java.util.Collections;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 public class VariableProposition implements Proposition {
     private final String variableName;
@@ -24,8 +23,8 @@ public class VariableProposition implements Proposition {
     }
 
     @Override
-    public Set<String> findVariableNames() {
-        return Collections.singleton(variableName);
+    public SortedSet<String> findVariableNames() {
+        return SingletonSortedSet.singletonSortedSet(variableName, Comparator.naturalOrder());
     }
 
     public String getVariableName() {

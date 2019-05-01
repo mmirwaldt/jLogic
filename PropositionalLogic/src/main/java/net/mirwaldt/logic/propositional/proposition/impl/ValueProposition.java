@@ -6,6 +6,7 @@ import net.mirwaldt.logic.propositional.proposition.api.Proposition;
 import java.util.Collections;
 import java.util.Objects;
 import java.util.Set;
+import java.util.SortedSet;
 
 import static net.mirwaldt.logic.propositional.util.PropositionUtils.toBit;
 
@@ -26,8 +27,8 @@ public class ValueProposition implements Proposition {
     }
 
     @Override
-    public Set<String> findVariableNames() {
-        return Collections.emptySet();
+    public SortedSet<String> findVariableNames() {
+        return Collections.emptySortedSet();
     }
     
     @Override

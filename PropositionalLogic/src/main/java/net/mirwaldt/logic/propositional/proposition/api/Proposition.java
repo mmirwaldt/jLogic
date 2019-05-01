@@ -5,10 +5,7 @@ import net.mirwaldt.logic.propositional.normalizer.impl.ConjunctivePropositionNo
 import net.mirwaldt.logic.propositional.normalizer.impl.DisjunctivePropositionNormalizer;
 import net.mirwaldt.logic.propositional.proposition.impl.*;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import static net.mirwaldt.logic.propositional.util.PropositionUtils.fromBit;
 import static net.mirwaldt.logic.propositional.util.PropositionUtils.toBit;
@@ -28,7 +25,7 @@ public interface Proposition {
      */
     String toExpression();
     
-    Set<String> findVariableNames();
+    SortedSet<String> findVariableNames();
     
     ValueProposition FALSE = new ValueProposition(false);
     ValueProposition TRUE = new ValueProposition(true);

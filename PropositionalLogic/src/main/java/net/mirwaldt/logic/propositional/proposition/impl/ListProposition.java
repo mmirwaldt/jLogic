@@ -6,9 +6,7 @@ import net.mirwaldt.logic.propositional.proposition.api.Proposition;
 import net.mirwaldt.logic.propositional.util.PropositionUtils;
 import net.mirwaldt.logic.propositional.proposition.api.BiBooleanPredicate;
 
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -73,10 +71,10 @@ public class ListProposition implements MultiProposition {
     }
 
     @Override
-    public Set<String> findVariableNames() {
+    public SortedSet<String> findVariableNames() {
         return propositions.stream()
                 .flatMap(proposition -> proposition.findVariableNames().stream())
-                .collect(Collectors.toSet());
+                .collect(Collectors.toCollection(TreeSet::new));
     }
 
     @Override

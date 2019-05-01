@@ -5,6 +5,7 @@ import net.mirwaldt.logic.propositional.proposition.api.Proposition;
 
 import java.util.Objects;
 import java.util.Set;
+import java.util.SortedSet;
 
 import static net.mirwaldt.logic.propositional.util.PropositionUtils.toFinalExpression;
 
@@ -27,7 +28,7 @@ public class NotProposition implements Proposition {
     }
 
     @Override
-    public Set<String> findVariableNames() {
+    public SortedSet<String> findVariableNames() {
         return proposition.findVariableNames();
     }
 

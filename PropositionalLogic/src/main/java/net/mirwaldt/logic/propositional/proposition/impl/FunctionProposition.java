@@ -6,6 +6,8 @@ import net.mirwaldt.logic.propositional.proposition.api.Proposition;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 public class FunctionProposition implements Proposition {
     private final BooleanFunction booleanFunction;
@@ -25,7 +27,7 @@ public class FunctionProposition implements Proposition {
     }
 
     @Override
-    public Set<String> findVariableNames() {
-        return new HashSet<>(booleanFunction.getParameterNames());
+    public SortedSet<String> findVariableNames() {
+        return new TreeSet<>(booleanFunction.getParameterNames());
     }
 }
