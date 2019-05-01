@@ -1,13 +1,12 @@
 package net.mirwaldt.logic.propositional.util;
 
-import java.io.Serializable;
 import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 public class SingletonSortedSet<E>
         extends AbstractSet<E>
-        implements Serializable, SortedSet<E> {
+        implements SortedSet<E> {
     private final E element;
     private final Comparator<? super E> comparator;
 
