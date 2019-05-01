@@ -40,7 +40,7 @@ public class SingletonSortedSet<E>
 
     @Override
     public Spliterator<E> spliterator() {
-        return singletonSpliterator(element);
+        return singletonSpliterator(element, comparator);
     }
 
     @Override
@@ -122,7 +122,7 @@ public class SingletonSortedSet<E>
         };
     }
     
-    private static <T> Spliterator<T> singletonSpliterator(final T element) {
+    private static <T> Spliterator<T> singletonSpliterator(final T element, Comparator<? super T> comparator) {
         return new Spliterator<T>() {
             long est = 1;
 
@@ -158,6 +158,11 @@ public class SingletonSortedSet<E>
 
                 return value | Spliterator.SIZED | Spliterator.SUBSIZED | Spliterator.IMMUTABLE |
                         Spliterator.DISTINCT | Spliterator.SORTED;
+            }
+
+            @Override
+            public Comparator<? super T> getComparator() {
+                return comparator;
             }
         };
     }
