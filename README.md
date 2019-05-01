@@ -12,7 +12,7 @@ Propositional logic
 * prove by method of analytic tableaux 
 * optimize by Karnaugh map
 
-Predicate calculus
+Predicate logic
 * express predicates
 * convert to prenex normal form
 * convert to Skolem normal form
@@ -20,4 +20,5 @@ Predicate calculus
 * prove by method of analytic tableaux
 
 Limits:
+- Works only from Java 11+ on
 - No support for L2+ high order logic planned (I am no theoretical computer scientist ;-)
