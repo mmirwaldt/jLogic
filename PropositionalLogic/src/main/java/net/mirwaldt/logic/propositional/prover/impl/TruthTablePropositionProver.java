@@ -1,6 +1,6 @@
 package net.mirwaldt.logic.propositional.prover.impl;
 
-import net.mirwaldt.logic.propositional.interpretation.api.Interpretation;
+import net.mirwaldt.logic.propositional.interpretation.api.PropositionInterpretation;
 import net.mirwaldt.logic.propositional.interpretation.impl.LongInterpretationsIterable;
 import net.mirwaldt.logic.propositional.proposition.api.Proposition;
 import net.mirwaldt.logic.propositional.prover.api.PropositionProver;
@@ -14,7 +14,7 @@ public class TruthTablePropositionProver implements PropositionProver {
         final List<String> variableNames = new ArrayList<>(proposition.findVariableNames());
         final LongInterpretationsIterable longInterpretationsIterable = new LongInterpretationsIterable(variableNames);
 
-        for (Interpretation interpretation : longInterpretationsIterable) {
+        for (PropositionInterpretation interpretation : longInterpretationsIterable) {
             if (!proposition.evaluate(interpretation)) {
                 return false;
             }

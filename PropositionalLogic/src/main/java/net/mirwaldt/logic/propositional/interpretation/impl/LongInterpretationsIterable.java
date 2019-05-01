@@ -1,13 +1,13 @@
 package net.mirwaldt.logic.propositional.interpretation.impl;
 
-import net.mirwaldt.logic.propositional.interpretation.api.Interpretation;
+import net.mirwaldt.logic.propositional.interpretation.api.PropositionInterpretation;
 
 import java.util.Iterator;
 import java.util.List;
 
 import static net.mirwaldt.logic.propositional.util.BitUtils.reverseBits;
 
-public class LongInterpretationsIterable implements Iterable<Interpretation> {
+public class LongInterpretationsIterable implements Iterable<PropositionInterpretation> {
     private final List<String> variableNames;
 
     public LongInterpretationsIterable(List<String> variableNames) {
@@ -15,7 +15,7 @@ public class LongInterpretationsIterable implements Iterable<Interpretation> {
     }
 
     @Override
-    public Iterator<Interpretation> iterator() {
+    public Iterator<PropositionInterpretation> iterator() {
         return new Iterator<>() {
             final int numberOfBits = variableNames.size();
             final long numberOfRows = 1 << numberOfBits;
@@ -27,8 +27,8 @@ public class LongInterpretationsIterable implements Iterable<Interpretation> {
             }
 
             @Override
-            public Interpretation next() {
-                return new LongInterpretation(variableNames, reverseBits(rowIndex++, numberOfBits));
+            public PropositionInterpretation next() {
+                return new LongPropositionInterpretation(variableNames, reverseBits(rowIndex++, numberOfBits));
             }
         };
     }

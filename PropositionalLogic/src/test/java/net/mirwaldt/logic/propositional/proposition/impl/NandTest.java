@@ -1,6 +1,6 @@
 package net.mirwaldt.logic.propositional.proposition.impl;
 
-import net.mirwaldt.logic.propositional.interpretation.api.Interpretation;
+import net.mirwaldt.logic.propositional.interpretation.api.PropositionInterpretation;
 import net.mirwaldt.logic.propositional.proposition.api.Proposition;
 import org.junit.jupiter.api.Test;
 
@@ -20,9 +20,9 @@ public class NandTest {
 
     @Test
     void test_evaluate() {
-        assertFalse(A_NAND_B.evaluate(Interpretation.of("A", true, "B", true)));
-        assertTrue(A_NAND_B.evaluate(Interpretation.of("A", true, "B", false)));
-        assertTrue(A_NAND_B.evaluate(Interpretation.of("A", false, "B", true)));
-        assertTrue(A_NAND_B.evaluate(Interpretation.of("A", false, "B", false)));
+        assertFalse(A_NAND_B.evaluate(PropositionInterpretation.of("A", true, "B", true)));
+        assertTrue(A_NAND_B.evaluate(PropositionInterpretation.of("A", true, "B", false)));
+        assertTrue(A_NAND_B.evaluate(PropositionInterpretation.of("A", false, "B", true)));
+        assertTrue(A_NAND_B.evaluate(PropositionInterpretation.of("A", false, "B", false)));
     }
 }

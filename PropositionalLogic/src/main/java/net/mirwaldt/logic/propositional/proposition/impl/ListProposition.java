@@ -1,6 +1,6 @@
 package net.mirwaldt.logic.propositional.proposition.impl;
 
-import net.mirwaldt.logic.propositional.interpretation.api.Interpretation;
+import net.mirwaldt.logic.propositional.interpretation.api.PropositionInterpretation;
 import net.mirwaldt.logic.propositional.proposition.api.MultiProposition;
 import net.mirwaldt.logic.propositional.proposition.api.Proposition;
 import net.mirwaldt.logic.propositional.util.PropositionUtils;
@@ -44,7 +44,7 @@ public class ListProposition implements MultiProposition {
     }
 
     @Override
-    public boolean evaluate(Interpretation interpretation) {
+    public boolean evaluate(PropositionInterpretation interpretation) {
         final Proposition firstProposition = propositions.get(0);
         final Proposition secondProposition = propositions.get(1);
         final boolean firstValue = firstProposition.evaluate(interpretation);

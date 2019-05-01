@@ -1,8 +1,7 @@
 package net.mirwaldt.logic.propositional.proposition.impl;
 
-import net.mirwaldt.logic.propositional.interpretation.api.Interpretation;
+import net.mirwaldt.logic.propositional.interpretation.api.PropositionInterpretation;
 import net.mirwaldt.logic.propositional.proposition.api.Proposition;
-import net.mirwaldt.logic.propositional.proposition.impl.VariableProposition;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;
@@ -28,17 +27,17 @@ public class VariablePropositionTest {
 
     @Test
     void test_evaluateWithoutValue() {
-        assertThrows(NoSuchElementException.class, () -> A.evaluate(Interpretation.of("B", true)));
+        assertThrows(NoSuchElementException.class, () -> A.evaluate(PropositionInterpretation.of("B", true)));
     }
 
     @Test
     void test_evaluateWithValueFalse() {
-        assertFalse(A.evaluate(Interpretation.of("A", false)));
+        assertFalse(A.evaluate(PropositionInterpretation.of("A", false)));
     }
 
     @Test
     void test_evaluateWithValueTrue() {
-        assertTrue(A.evaluate(Interpretation.of("A", true)));
+        assertTrue(A.evaluate(PropositionInterpretation.of("A", true)));
     }
     
     @Test

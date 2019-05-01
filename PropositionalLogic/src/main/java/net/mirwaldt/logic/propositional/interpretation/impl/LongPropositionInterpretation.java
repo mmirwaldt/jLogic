@@ -8,11 +8,11 @@ import java.util.Objects;
 import static net.mirwaldt.logic.propositional.util.BitUtils.decode;
 import static net.mirwaldt.logic.propositional.util.PropositionUtils.fromBit;
 
-public class LongInterpretation extends AbstractInterpretation {
+public class LongPropositionInterpretation extends AbstractPropositionInterpretation {
     private final List<String> variableNames;
     private final long bits;
 
-    public LongInterpretation(List<String> variableNames, long bits) {
+    public LongPropositionInterpretation(List<String> variableNames, long bits) {
         checkParameters(variableNames);
         this.variableNames = Collections.unmodifiableList(variableNames);
         this.bits = bits;
@@ -20,7 +20,7 @@ public class LongInterpretation extends AbstractInterpretation {
 
     @Override
     protected boolean equalsSameClass(Object o) {
-        LongInterpretation that = (LongInterpretation) o;
+        LongPropositionInterpretation that = (LongPropositionInterpretation) o;
         return bits == that.bits &&
                 Objects.equals(variableNames, that.variableNames);
     }

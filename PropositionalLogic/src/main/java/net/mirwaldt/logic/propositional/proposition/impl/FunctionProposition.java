@@ -1,11 +1,9 @@
 package net.mirwaldt.logic.propositional.proposition.impl;
 
 import net.mirwaldt.logic.propositional.proposition.api.BooleanFunction;
-import net.mirwaldt.logic.propositional.interpretation.api.Interpretation;
+import net.mirwaldt.logic.propositional.interpretation.api.PropositionInterpretation;
 import net.mirwaldt.logic.propositional.proposition.api.Proposition;
 
-import java.util.HashSet;
-import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
@@ -17,7 +15,7 @@ public class FunctionProposition implements Proposition {
     }
 
     @Override
-    public boolean evaluate(Interpretation interpretation) {
+    public boolean evaluate(PropositionInterpretation interpretation) {
         return booleanFunction.getResult(interpretation);
     }
 

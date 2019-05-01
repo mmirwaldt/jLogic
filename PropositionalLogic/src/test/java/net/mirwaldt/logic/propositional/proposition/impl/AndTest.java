@@ -1,6 +1,6 @@
 package net.mirwaldt.logic.propositional.proposition.impl;
 
-import net.mirwaldt.logic.propositional.interpretation.api.Interpretation;
+import net.mirwaldt.logic.propositional.interpretation.api.PropositionInterpretation;
 import net.mirwaldt.logic.propositional.proposition.api.Proposition;
 import org.junit.jupiter.api.Test;
 
@@ -21,10 +21,10 @@ public class AndTest {
 
     @Test
     void test_evaluate() {
-        assertTrue(A_AND_B.evaluate(Interpretation.of("A", true, "B", true)));
-        assertFalse(A_AND_B.evaluate(Interpretation.of("A", true, "B", false)));
-        assertFalse(A_AND_B.evaluate(Interpretation.of("A", false, "B", true)));
-        assertFalse(A_AND_B.evaluate(Interpretation.of("A", false, "B", false)));
+        assertTrue(A_AND_B.evaluate(PropositionInterpretation.of("A", true, "B", true)));
+        assertFalse(A_AND_B.evaluate(PropositionInterpretation.of("A", true, "B", false)));
+        assertFalse(A_AND_B.evaluate(PropositionInterpretation.of("A", false, "B", true)));
+        assertFalse(A_AND_B.evaluate(PropositionInterpretation.of("A", false, "B", false)));
     }
 
     @Test

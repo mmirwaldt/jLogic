@@ -2,18 +2,18 @@ package net.mirwaldt.logic.propositional.interpretation.impl;
 
 import java.util.*;
 
-public class BitSetInterpretation extends AbstractInterpretation {
+public class BitSetPropositionInterpretation extends AbstractPropositionInterpretation {
     private final List<String> variableNames;
     private final BitSet bits;
     private final Comparator<String> variableNamesComparator;
 
-    public BitSetInterpretation(List<String> variableNames, BitSet bits, Comparator<String> variableNamesComparator) {
+    public BitSetPropositionInterpretation(List<String> variableNames, BitSet bits, Comparator<String> variableNamesComparator) {
         this.variableNames = variableNames;
         this.bits = bits;
         this.variableNamesComparator = variableNamesComparator;
     }
 
-    public BitSetInterpretation(List<String> variableNames, BitSet bits) {
+    public BitSetPropositionInterpretation(List<String> variableNames, BitSet bits) {
         this(variableNames, bits, Comparator.naturalOrder());
     }
 
@@ -34,7 +34,7 @@ public class BitSetInterpretation extends AbstractInterpretation {
 
     @Override
     protected boolean equalsSameClass(Object o) {
-        BitSetInterpretation that = (BitSetInterpretation) o;
+        BitSetPropositionInterpretation that = (BitSetPropositionInterpretation) o;
         return Objects.equals(variableNames, that.variableNames) &&
                 Objects.equals(variableNamesComparator, that.variableNamesComparator) &&
                 Objects.equals(bits, that.bits);

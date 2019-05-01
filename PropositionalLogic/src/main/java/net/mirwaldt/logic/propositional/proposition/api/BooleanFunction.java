@@ -1,6 +1,6 @@
 package net.mirwaldt.logic.propositional.proposition.api;
 
-import net.mirwaldt.logic.propositional.interpretation.api.Interpretation;
+import net.mirwaldt.logic.propositional.interpretation.api.PropositionInterpretation;
 
 import java.util.List;
 
@@ -12,15 +12,15 @@ public interface BooleanFunction {
 
     List<String> getParameterNames();
 
-    List<Interpretation> getInterpretations();
+    List<PropositionInterpretation> getInterpretations();
 
-    boolean getResult(Interpretation interpretation);
+    boolean getResult(PropositionInterpretation interpretation);
 
     default String getFunctionSignature() {
         return getFunctionName() + "(" + String.join(",", getParameterNames()) + ")";
     }
 
-    default String getFunctionCall(Interpretation interpretation) {
+    default String getFunctionCall(PropositionInterpretation interpretation) {
         return getFunctionName() + "("
                 + getParameterNames().stream()
                 .map(parameterName -> String.valueOf(toBit(interpretation.get(parameterName))))

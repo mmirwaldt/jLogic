@@ -1,6 +1,6 @@
 package net.mirwaldt.logic.propositional.table.impl;
 
-import net.mirwaldt.logic.propositional.interpretation.api.Interpretation;
+import net.mirwaldt.logic.propositional.interpretation.api.PropositionInterpretation;
 import net.mirwaldt.logic.propositional.interpretation.impl.LongInterpretationsIterable;
 import net.mirwaldt.logic.propositional.proposition.api.Proposition;
 
@@ -32,7 +32,7 @@ public class TruthTableGenerator {
                 String.format(rowPattern, String.join(" ", variableNames),
                         complex.toExpression(), "DNF", "CNF")
         );
-        for (Interpretation interpretation : longInterpretationsIterable) {
+        for (PropositionInterpretation interpretation : longInterpretationsIterable) {
             System.out.println(
                     String.format(rowPattern, 
                             interpretation.asBitsWhitespaceSeparated(), 

@@ -1,6 +1,6 @@
 package net.mirwaldt.logic.propositional.proposition.impl;
 
-import net.mirwaldt.logic.propositional.interpretation.api.Interpretation;
+import net.mirwaldt.logic.propositional.interpretation.api.PropositionInterpretation;
 import net.mirwaldt.logic.propositional.proposition.api.Proposition;
 import org.junit.jupiter.api.Test;
 
@@ -28,37 +28,37 @@ public class AndListTest {
     @Test
     void test_evaluate() {
         assertFalse(A_AND_B_AND_NOT_C_AND_D.evaluate(
-                Interpretation.of("A", 0, "B", 0, "C", 0, "D", 0)));
+                PropositionInterpretation.of("A", 0, "B", 0, "C", 0, "D", 0)));
         assertFalse(A_AND_B_AND_NOT_C_AND_D.evaluate(
-                Interpretation.of("A", 0, "B", 0, "C", 0, "D", 1)));
+                PropositionInterpretation.of("A", 0, "B", 0, "C", 0, "D", 1)));
         assertFalse(A_AND_B_AND_NOT_C_AND_D.evaluate(
-                Interpretation.of("A", 0, "B", 0, "C", 1, "D", 0)));
+                PropositionInterpretation.of("A", 0, "B", 0, "C", 1, "D", 0)));
         assertFalse(A_AND_B_AND_NOT_C_AND_D.evaluate(
-                Interpretation.of("A", 0, "B", 0, "C", 1, "D", 1)));
+                PropositionInterpretation.of("A", 0, "B", 0, "C", 1, "D", 1)));
         assertFalse(A_AND_B_AND_NOT_C_AND_D.evaluate(
-                Interpretation.of("A", 0, "B", 1, "C", 0, "D", 0)));
+                PropositionInterpretation.of("A", 0, "B", 1, "C", 0, "D", 0)));
         assertFalse(A_AND_B_AND_NOT_C_AND_D.evaluate(
-                Interpretation.of("A", 0, "B", 1, "C", 0, "D", 1)));
+                PropositionInterpretation.of("A", 0, "B", 1, "C", 0, "D", 1)));
         assertFalse(A_AND_B_AND_NOT_C_AND_D.evaluate(
-                Interpretation.of("A", 0, "B", 1, "C", 1, "D", 0)));
+                PropositionInterpretation.of("A", 0, "B", 1, "C", 1, "D", 0)));
         assertFalse(A_AND_B_AND_NOT_C_AND_D.evaluate(
-                Interpretation.of("A", 0, "B", 1, "C", 1, "D", 1)));
+                PropositionInterpretation.of("A", 0, "B", 1, "C", 1, "D", 1)));
         assertFalse(A_AND_B_AND_NOT_C_AND_D.evaluate(
-                Interpretation.of("A", 1, "B", 0, "C", 0, "D", 0)));
+                PropositionInterpretation.of("A", 1, "B", 0, "C", 0, "D", 0)));
         assertFalse(A_AND_B_AND_NOT_C_AND_D.evaluate(
-                Interpretation.of("A", 1, "B", 0, "C", 0, "D", 1)));
+                PropositionInterpretation.of("A", 1, "B", 0, "C", 0, "D", 1)));
         assertFalse(A_AND_B_AND_NOT_C_AND_D.evaluate(
-                Interpretation.of("A", 1, "B", 0, "C", 1, "D", 0)));
+                PropositionInterpretation.of("A", 1, "B", 0, "C", 1, "D", 0)));
         assertFalse(A_AND_B_AND_NOT_C_AND_D.evaluate(
-                Interpretation.of("A", 1, "B", 0, "C", 1, "D", 1)));
+                PropositionInterpretation.of("A", 1, "B", 0, "C", 1, "D", 1)));
         assertFalse(A_AND_B_AND_NOT_C_AND_D.evaluate(
-                Interpretation.of("A", 1, "B", 1, "C", 0, "D", 0)));
+                PropositionInterpretation.of("A", 1, "B", 1, "C", 0, "D", 0)));
         assertTrue(A_AND_B_AND_NOT_C_AND_D.evaluate(
-                Interpretation.of("A", 1, "B", 1, "C", 0, "D", 1)));
+                PropositionInterpretation.of("A", 1, "B", 1, "C", 0, "D", 1)));
         assertFalse(A_AND_B_AND_NOT_C_AND_D.evaluate(
-                Interpretation.of("A", 1, "B", 1, "C", 1, "D", 0)));
+                PropositionInterpretation.of("A", 1, "B", 1, "C", 1, "D", 0)));
         assertFalse(A_AND_B_AND_NOT_C_AND_D.evaluate(
-                Interpretation.of("A", 1, "B", 1, "C", 1, "D", 1)));
+                PropositionInterpretation.of("A", 1, "B", 1, "C", 1, "D", 1)));
     }
     
     @Test

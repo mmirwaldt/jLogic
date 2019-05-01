@@ -1,6 +1,6 @@
 package net.mirwaldt.logic.propositional.proposition.impl;
 
-import net.mirwaldt.logic.propositional.interpretation.api.Interpretation;
+import net.mirwaldt.logic.propositional.interpretation.api.PropositionInterpretation;
 import net.mirwaldt.logic.propositional.proposition.api.Proposition;
 import org.junit.jupiter.api.Test;
 
@@ -21,12 +21,12 @@ public class NotTest {
 
     @Test
     void test_evaluateWithValueFalse() {
-        assertTrue(NOT_A.evaluate(Interpretation.of("A", false)));
+        assertTrue(NOT_A.evaluate(PropositionInterpretation.of("A", false)));
     }
 
     @Test
     void test_evaluateWithValueTrue() {
-        assertFalse(NOT_A.evaluate(Interpretation.of("A", true)));
+        assertFalse(NOT_A.evaluate(PropositionInterpretation.of("A", true)));
     }
 
     @Test

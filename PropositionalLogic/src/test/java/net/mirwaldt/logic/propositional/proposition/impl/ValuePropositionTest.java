@@ -1,6 +1,6 @@
 package net.mirwaldt.logic.propositional.proposition.impl;
 
-import net.mirwaldt.logic.propositional.interpretation.api.Interpretation;
+import net.mirwaldt.logic.propositional.interpretation.api.PropositionInterpretation;
 import net.mirwaldt.logic.propositional.proposition.api.Proposition;
 import org.junit.jupiter.api.Test;
 
@@ -15,14 +15,14 @@ public class ValuePropositionTest {
     @Test
     void test_TRUE() {
         assertEquals(String.valueOf(1), TRUE.toExpression());
-        assertTrue(TRUE.evaluate(Interpretation.of("A", 1)));
+        assertTrue(TRUE.evaluate(PropositionInterpretation.of("A", 1)));
         assertEquals(Collections.emptySet(), TRUE.findVariableNames());
     }
 
     @Test
     void test_FALSE() {
         assertEquals(String.valueOf(0), FALSE.toExpression());
-        assertFalse(FALSE.evaluate(Interpretation.of("A", 1)));
+        assertFalse(FALSE.evaluate(PropositionInterpretation.of("A", 1)));
         assertEquals(Collections.emptySet(), FALSE.findVariableNames());
     }
 

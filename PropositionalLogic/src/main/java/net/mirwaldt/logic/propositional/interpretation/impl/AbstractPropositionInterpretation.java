@@ -1,12 +1,12 @@
 package net.mirwaldt.logic.propositional.interpretation.impl;
 
-import net.mirwaldt.logic.propositional.interpretation.api.Interpretation;
+import net.mirwaldt.logic.propositional.interpretation.api.PropositionInterpretation;
 
 import java.util.Objects;
 
 import static net.mirwaldt.logic.propositional.util.PropositionUtils.toBit;
 
-public abstract class AbstractInterpretation implements Interpretation {
+public abstract class AbstractPropositionInterpretation implements PropositionInterpretation {
     private int hashCode;
 
     @Override
@@ -17,8 +17,8 @@ public abstract class AbstractInterpretation implements Interpretation {
             return equalsSameClass(o);
         }
         
-        if (o instanceof Interpretation) {
-            Interpretation other = (Interpretation) o;
+        if (o instanceof PropositionInterpretation) {
+            PropositionInterpretation other = (PropositionInterpretation) o;
             if (other.getVariableNames().equals(getVariableNames())) {
                 for (String variableName : getVariableNames()) {
                     if (other.get(variableName) != get(variableName)) {

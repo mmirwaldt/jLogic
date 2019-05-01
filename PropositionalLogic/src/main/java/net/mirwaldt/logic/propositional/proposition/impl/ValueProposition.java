@@ -1,11 +1,10 @@
 package net.mirwaldt.logic.propositional.proposition.impl;
 
-import net.mirwaldt.logic.propositional.interpretation.api.Interpretation;
+import net.mirwaldt.logic.propositional.interpretation.api.PropositionInterpretation;
 import net.mirwaldt.logic.propositional.proposition.api.Proposition;
 
 import java.util.Collections;
 import java.util.Objects;
-import java.util.Set;
 import java.util.SortedSet;
 
 import static net.mirwaldt.logic.propositional.util.PropositionUtils.toBit;
@@ -17,7 +16,7 @@ public class ValueProposition implements Proposition {
         this.value = value;
     }
 
-    public boolean evaluate(Interpretation interpretation) {
+    public boolean evaluate(PropositionInterpretation interpretation) {
         return value;
     }
 

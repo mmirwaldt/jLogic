@@ -1,6 +1,6 @@
 package net.mirwaldt.logic.propositional.normalizer.impl;
 
-import net.mirwaldt.logic.propositional.interpretation.api.Interpretation;
+import net.mirwaldt.logic.propositional.interpretation.api.PropositionInterpretation;
 import net.mirwaldt.logic.propositional.interpretation.impl.LongInterpretationsIterable;
 import net.mirwaldt.logic.propositional.normalizer.api.PropositionNormalizer;
 import net.mirwaldt.logic.propositional.proposition.api.Proposition;
@@ -23,7 +23,7 @@ public class ConjunctivePropositionNormalizer implements PropositionNormalizer {
         variableNames.sort(Comparator.naturalOrder());
         final LongInterpretationsIterable longInterpretationsIterable = new LongInterpretationsIterable(variableNames);
 
-        for (Interpretation interpretation : longInterpretationsIterable) {
+        for (PropositionInterpretation interpretation : longInterpretationsIterable) {
             if (!proposition.evaluate(interpretation)) {
                 final Proposition disjunction = makeDisjunction(variableNames, interpretation);
                 if (normalizedProposition == null) {
@@ -42,7 +42,7 @@ public class ConjunctivePropositionNormalizer implements PropositionNormalizer {
         }
     }
 
-    private OrProposition makeDisjunction(List<String> variableNames, Interpretation interpretation) {
+    private OrProposition makeDisjunction(List<String> variableNames, PropositionInterpretation interpretation) {
         return OrProposition.create(variableNames.stream()
                 .map(VariableProposition::new)
                 .map(variableProposition ->

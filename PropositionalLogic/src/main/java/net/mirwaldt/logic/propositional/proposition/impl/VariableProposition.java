@@ -1,6 +1,6 @@
 package net.mirwaldt.logic.propositional.proposition.impl;
 
-import net.mirwaldt.logic.propositional.interpretation.api.Interpretation;
+import net.mirwaldt.logic.propositional.interpretation.api.PropositionInterpretation;
 import net.mirwaldt.logic.propositional.proposition.api.Proposition;
 import net.mirwaldt.logic.propositional.util.SingletonSortedSet;
 
@@ -14,7 +14,7 @@ public class VariableProposition implements Proposition {
         this.variableName = variableName;
     }
 
-    public boolean evaluate(Interpretation interpretation) {
+    public boolean evaluate(PropositionInterpretation interpretation) {
         return interpretation.get(variableName);
     }
 

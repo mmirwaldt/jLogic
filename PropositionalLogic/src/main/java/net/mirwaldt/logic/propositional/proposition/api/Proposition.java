@@ -1,6 +1,6 @@
 package net.mirwaldt.logic.propositional.proposition.api;
 
-import net.mirwaldt.logic.propositional.interpretation.api.Interpretation;
+import net.mirwaldt.logic.propositional.interpretation.api.PropositionInterpretation;
 import net.mirwaldt.logic.propositional.normalizer.impl.ConjunctivePropositionNormalizer;
 import net.mirwaldt.logic.propositional.normalizer.impl.DisjunctivePropositionNormalizer;
 import net.mirwaldt.logic.propositional.proposition.impl.*;
@@ -17,7 +17,7 @@ public interface Proposition {
      * @return the evaluated value for the proposition
      * @throws java.util.NoSuchElementException if map contains not the needed values for the evaluation 
      */
-    boolean evaluate(Interpretation interpretation);
+    boolean evaluate(PropositionInterpretation interpretation);
     
     /**
      * converts proposition to expression string
@@ -46,7 +46,7 @@ public interface Proposition {
         return value(fromBit(value));
     }
 
-    default int evaluateAsBit(Interpretation interpretation) {
+    default int evaluateAsBit(PropositionInterpretation interpretation) {
         return toBit(evaluate(interpretation));
     }
     
@@ -132,7 +132,7 @@ public interface Proposition {
     }
 
     static Proposition function(String functionName, List<String> parameterNames,
-                                       List<Interpretation> interpretations, long resultBits) {
+                                List<PropositionInterpretation> interpretations, long resultBits) {
         return new FunctionProposition(
                 new LongBooleanFunction(functionName, parameterNames, interpretations, resultBits));
     }

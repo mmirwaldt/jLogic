@@ -1,11 +1,9 @@
 package net.mirwaldt.logic.propositional.util;
 
-import net.mirwaldt.logic.propositional.interpretation.api.Interpretation;
+import net.mirwaldt.logic.propositional.interpretation.api.PropositionInterpretation;
 import org.junit.jupiter.api.Test;
 
 import static java.util.Arrays.asList;
-import static java.util.Collections.emptyList;
-import static java.util.Collections.singletonList;
 import static net.mirwaldt.logic.propositional.proposition.api.Proposition.*;
 import static net.mirwaldt.logic.propositional.util.PropositionUtils.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -19,7 +17,7 @@ public class PropositionUtilsTest {
         assertEquals("(A ∧ B)", PropositionUtils.toFinalExpression(and(variable("A"), variable("B"))));
         assertEquals("f(A)",
                 PropositionUtils.toFinalExpression(
-                        function("f", asList("A"), asList(Interpretation.of("A", 1)), 0)));
+                        function("f", asList("A"), asList(PropositionInterpretation.of("A", 1)), 0)));
         assertEquals("(A ∧ B ∧ C)",
                 PropositionUtils.toFinalExpression(
                         and(variable("A"), variable("B"), variable("C"))));

@@ -1,6 +1,6 @@
 package net.mirwaldt.logic.propositional.proposition.impl;
 
-import net.mirwaldt.logic.propositional.interpretation.api.Interpretation;
+import net.mirwaldt.logic.propositional.interpretation.api.PropositionInterpretation;
 import net.mirwaldt.logic.propositional.proposition.api.Proposition;
 import org.junit.jupiter.api.Test;
 
@@ -22,10 +22,10 @@ public class OrTest {
 
     @Test
     void test_evaluate() {
-        assertTrue(A_OR_B.evaluate(Interpretation.of("A", true, "B", true)));
-        assertTrue(A_OR_B.evaluate(Interpretation.of("A", true, "B", false)));
-        assertTrue(A_OR_B.evaluate(Interpretation.of("A", false, "B", true)));
-        assertFalse(A_OR_B.evaluate(Interpretation.of("A", false, "B", false)));
+        assertTrue(A_OR_B.evaluate(PropositionInterpretation.of("A", true, "B", true)));
+        assertTrue(A_OR_B.evaluate(PropositionInterpretation.of("A", true, "B", false)));
+        assertTrue(A_OR_B.evaluate(PropositionInterpretation.of("A", false, "B", true)));
+        assertFalse(A_OR_B.evaluate(PropositionInterpretation.of("A", false, "B", false)));
     }
     
     @Test
