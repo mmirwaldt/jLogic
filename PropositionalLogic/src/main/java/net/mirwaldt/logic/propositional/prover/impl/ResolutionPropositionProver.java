@@ -15,6 +15,9 @@ import static net.mirwaldt.logic.propositional.proposition.api.Proposition.varia
 public class ResolutionPropositionProver implements PropositionProver {
     @Override
     public boolean prove(Proposition proposition) {
+        if(proposition.findVariableNames().size() < 2) {
+            return false;
+        }
         final AndProposition cnf = (AndProposition) not(proposition).toCNF();
         final List<SortedSet<Proposition>> resolvents = toResolvents(cnf);
         return resolve(resolvents);

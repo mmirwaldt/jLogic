@@ -20,7 +20,11 @@ public class ConjunctivePropositionNormalizer implements PropositionNormalizer {
     public Proposition normalize(Proposition proposition) {
         Proposition normalizedProposition = null;
         final List<String> variableNames = new ArrayList<>(proposition.findVariableNames());
-        variableNames.sort(Comparator.naturalOrder());
+        if(variableNames.size() < 2) {
+            throw new NoSuchElementException(
+                    "No conjunctive normal form available for proposition '" + proposition.toExpression() + "'!");
+        }
+        
         final LongInterpretationsIterable longInterpretationsIterable = new LongInterpretationsIterable(variableNames);
 
         for (PropositionInterpretation interpretation : longInterpretationsIterable) {
@@ -36,7 +40,7 @@ public class ConjunctivePropositionNormalizer implements PropositionNormalizer {
 
         if (normalizedProposition == null) {
             throw new NoSuchElementException(
-                    "No conjunctive normal form available for '" + proposition.toExpression() + "'!");
+                    "No conjunctive normal form available for proposition '" + proposition.toExpression() + "'!");
         } else {
             return normalizedProposition;
         }
